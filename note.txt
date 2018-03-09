@@ -1,0 +1,26 @@
+网址的构成:
+	超文本传输协议://域名:端口号/资源在服务器上的路径?参数1=value1&参数2=value2
+	
+	http:超文本传输协议,在网络传输中制定的一个传输规则.
+	https:安全的超文本传输协议.
+	唯一一台主机
+	IP:地址可以看作一个主机通讯时的身份证,可以认为唯一标识一台主机.
+	域名:IP地址的一个解释名称,通过域名也可以找到网络上的
+	端口号:识别同一台主机上的某一个服务器
+
+	StringBuffer:
+		1.线程安全的字符缓冲类(可变字符串),尽量在单线程下使用
+		2.从末尾追加:append();
+		3.插入:insert(int index,something)
+		4.删除:delete(int start,int end),包含开始,不包含结束
+		5.修改:replace(int srart,int end,somethong)用something替换制定下表位置的内容
+		6.char charAt(int index) :根据下标获取字符
+		7.int indexOf(String str);
+	StringBuilder:线程不安全的,效率相对比StringBuffer要高
+	
+	jdk更新:
+	1.优化代码
+	2.提高安全性
+	3.提高编程效率
+	4.新增功能
+		
