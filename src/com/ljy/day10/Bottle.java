@@ -2,6 +2,7 @@ package com.ljy.day10;
 
 /**
  * 瓶子类，重写equals方法，比较两个瓶子是否相等（只要材质，形状和大小相同，就认为相等）
+ * 
  * @author Administrator
  *
  */
