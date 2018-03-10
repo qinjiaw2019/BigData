@@ -1,26 +1,28 @@
 package com.ljy.day10;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 public class Test10 {
 
 	public static void main(String[] args) {
-		String res = trim("  sss ");
-		System.out.println("|" + res + "|");
-		res = "HelloWorld";
-		res = reverse(2, 7, res);
-		System.out.println("反转后:" + res);
-
-		res = "gfedcba";
-		System.out.println("排序前:" + res);
-		System.out.println("排序后:" + sortStr(res));
-		System.out.println("6921168509256:" + certifyCode("6921168509256"));
-		System.out.println("===========================");
-		System.out.println(getRandom());
-
+//		String res = trim("  sss ");
+//		System.out.println("|" + res + "|");
+//		res = "HelloWorld";
+//		res = reverse(2, 7, res);
+//		System.out.println("反转后:" + res);
+//
+//		res = "gfedcba";
+//		System.out.println("排序前:" + res);
+//		System.out.println("排序后:" + sortStr(res));
+//		System.out.println("6921168509256:" + certifyCode("6921168509256"));
+//		System.out.println("===========================");
+//		System.out.println(getRandom());
+//		System.out.println("=============打印数组=============");
+		int[] array = {1,3,2,4,4,5,4,3,3,6,7,8,10,10,10,10,10};
+		printArray(array);
+		
 	}
 
 	/**
@@ -139,11 +141,11 @@ public class Test10 {
 		Random r = new Random();
 		List<Integer> list = new ArrayList<Integer>();
 		while (time < 10) {
-			String random = String.valueOf(r.nextInt(20) + 1);
+			int random = r.nextInt(20) + 1;
 			if (list.contains(random)) {
 				continue;
 			} else {
-				list.add(new Integer(random));
+				list.add(random);
 				time++;
 			}
 		}
@@ -153,9 +155,44 @@ public class Test10 {
 
 	/**
 	 * 给定一个含有n个元素的整型数组a，如果元素出现的次数为奇数次，则输出
+	 * 
 	 * @param array
 	 */
 	public static void printArray(int[] array) {
-		//将数组转化成集合
+		//1.先将数组排序
+		for(int i = 0;i<array.length-1;i++){
+			for(int j = i+1;j<array.length;j++){
+				if(array[i]>array[j]){
+					int temp = array[i];
+					array[i] = array[j];
+					array[j] = temp;
+				}
+			}
+		}
+		//int[] array = {1,3,2,4,4,4,5,6,7,8,10,10,10,10,10};
+		//遍历排好序的数组
+		int index = 0;
+		int time = 1;//重复的次数,初始化为1表示元素至少出现一次
+		for(int i = index+1;i<array.length;i++){
+			if(array[index]==array[i]){
+				time++;
+				//遍历到最后了
+				if(i==array.length-1){
+					//上一次遍历时出现了奇数次
+					if(time>1&&time%2!=0){
+						System.out.println("元素"+array[i]+"出现了"+time+"次");
+					}
+				}
+			}else{
+				//上一次遍历时出现了奇数次
+				if(time>1&&time%2!=0){
+					System.out.println("元素"+array[i-1]+"出现了"+time+"次");
+				}
+				time = 1;//归为初始值
+				index = i;
+			}
+			
+		}
 	}
+
 }
