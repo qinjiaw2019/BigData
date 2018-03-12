@@ -26,14 +26,14 @@
 
 
     包装类:
-    int-------Integer
-    short-----Short
-    byte------Byte
-    char------Charactor
-    float-----Float
-    double----Double
-    boolean---Boolean
-    long------Long
+    int-----------Integer
+    short---------Short
+    byte----------Byte
+    char----------Charactor
+    float---------Float
+    double--------Double
+    boolean-------Boolean
+    long----------Long
 
     包装类的作用:
         1.可以更加方便对简单数据类型进行操作

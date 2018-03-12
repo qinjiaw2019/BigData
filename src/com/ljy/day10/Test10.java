@@ -1,5 +1,7 @@
 package com.ljy.day10;
 
+import com.ljy.day11.Demo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -194,4 +196,7 @@ public class Test10 {
 		}
 
 	}
+
+
+
 }

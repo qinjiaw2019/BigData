@@ -1,0 +1,67 @@
+Date:日期类
+Data:数据类(二进制)
+
+date 类型:new Date();
+long型:System.currentTimeMillis();
+
+long-->date
+date-->long
+
+日期格式化工具类
+DateFormat:日期格式化工具类
+//参数1:日期格式
+//参数2:时间格式
+DateFormat.getDateTimeInstance(DateFormat.DEFAULT, DateFormat.DEFAULT);
+
+自定义日期转化后的格式类
+    SimpleDateFormat
+    初始化:
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+日历类:Calender
+    初始化对象:
+    Calendar calendar = Calendar.getInstance();
+    calendar.get(Calendar.DAY_OF_WEEK);//星期几 默认从1开始算,取1-7之间的值 1代表星期天.
+Math:数学计算类
+    1.求绝对值
+        Math.abs(-23);
+    2.向上取整
+        Math.ceil(3.4) --> 4
+    3.向下取整数
+        Math.floor(3.4) -->3
+    4.随机数
+    Math.random()--->[0-1)之间的double数
+
+随机数 Random
+    Random r = new Random();
+    r.nextInt();Integer.MAX_VALUE---Integer.MIN_VALUE
+    r.nextInt(100);[0,100)
+
+
+
+权限修饰词
+
+    1.public:
+        都可见
+    2.protected:
+        同类可见,同包可见,不同包有继承可见
+    3.private:
+        同类可见
+    4.default(friendly):
+        同类可见,同包可见
+
+     *  *四种访问权限：
+    	1.public：只能修饰类、方法（含构造方法）、成员变量。其修饰的部分所有人都能访问；
+
+    	2.默认修饰符（friendly）：只能修饰类、方法（含构造方法）、成员变量。其修饰的部分只有同一包内的类能访问，
+    	    对于这个包之外的所有类，这个成员是private的；
+
+    	3.private：只能修饰方法（含构造方法）、成员变量。其修饰的部分只能在自身类中访问。例如将某类的构造方法设置为private，
+    	   那么在其它类中就不能调用“new”来创建该类的实例，通常在该类中会对外提供一种方法，该方法能返回该类的实例；
+    	   再例如我们经常将成员变量设置为private的，对外提供set/get方法对其进行访问，在set/get方法中可做一些比如权限检测等操作，
+    	   而不是将域直接暴露给所有用户；
+
+    	4.protected：只能修饰方法（含构造方法）、成员变量。
+
+    	在同一包中具有包访问权限，相当于默认访问权限；
+
+    	注意事项:在子类中，可继承不同包内父类的protected方法和属性，也只能在该子类中访问（除非重写方法或属性）
