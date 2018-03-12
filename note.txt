@@ -19,8 +19,124 @@
 	StringBuilder:线程不安全的,效率相对比StringBuffer要高
 	
 	jdk更新:
-	1.优化代码
-	2.提高安全性
-	3.提高编程效率
-	4.新增功能
-		
+	    1.优化代码
+	    2.提高安全性
+	    3.提高编程效率
+	    4.新增功能
+
+
+    包装类:
+    int-------Integer
+    short-----Short
+    byte------Byte
+    char------Charactor
+    float-----Float
+    double----Double
+    boolean---Boolean
+    long------Long
+
+    包装类的作用:
+        1.可以更加方便对简单数据类型进行操作
+        2.为了方便基本数据类型与字符串之间的转换
+        3.方便在集合中存储
+    自动拆箱装箱
+    JDK1.5之后可以自动拆箱装箱
+
+    注意点:
+    [一个字节最大值127]
+                  ***
+    1.一个数在一个字节范围内,前面已经定义好了,后面在定义,只用之前的.
+                  ***
+                  如:Integer in1 = 100;
+                     Integer in2 = 100;
+                     in1==in2  //true
+       如果超出了一个字节的范围,就认为这是两个数,占用两块内存
+                  如:Integer in1 = 1000;
+                     Integer in2 = 1000;
+                     in1==in2  //false
+    包装类
+     * 基本类型转成字符串类型
+        static String Integer.toString(int i)
+        static String Double.toString(double d)
+           字符串类型转基本类型
+        int     Integer.parseInt("23")
+    	double  Double.parseDouble("3.45")
+
+    	把十进制转成其它进制
+       Integer.toHexString()
+       Integer.toOctalString()
+       Integer.toBinaryString()
+
+    	把其它进制转十进制
+      	Integer.parseInt(数据,进制)
+
+    Collection中定义是整个集合体系最共性的方法:
+    添加：
+       boolean add(Object o)
+       boolean addAll(Collection<? extends E> c)
+    删除:
+       boolean remove(Object o)
+       boolean removeAll(Collection<?> c)
+       void clear()
+    判断:
+       boolean contains(Object o)
+       boolean containsAll(Collection<?> c)
+       boolean isEmpty() //判断集合是否为空
+       boolean equals(Object o)
+    获取：
+       Iterator<E> iterator() //获取集合中的对象
+       int size() //获取集合中对象的个数
+    集合变数组：
+       Object[] toArray()
+    */
+
+
+
+    * List：特有方法，可以操作下标
+    增：
+        void add(int index, E element)
+        boolean addAll(int index, Collection<? extends E> c)
+
+    删
+       E remove(int index)
+
+    改
+       E set(int index, E element)
+
+    查
+         ListIterator<E> listIterator()
+         返回此列表元素的列表迭代器（按适当顺序）。
+         ListIterator<E> listIterator(int index)
+         List<E> subList(int fromIndex, int toIndex)
+         E get(int index)
+
+         删除全部对象
+
+
+
+
+    LindedList
+    	特有的方法：
+
+    	addFirst()//始终在首位添加
+    	addLast()//始终在末尾添加
+
+    	getFirst()//获取的对象不存在会发生异常
+    	getLast()
+
+    	removeFirst()//删除的对象不存在会发生异常
+    	removeLast()
+
+    	从jdk1.6开始出现以下方法
+    	offerFirst()
+    	offerLast()
+
+    	peekFirst()//获取的对象不存在会返回null
+    	peekLast()
+
+    	pollFirst()//删除的对象不存在会返回null
+    	pollLast()
+
+
+
+
