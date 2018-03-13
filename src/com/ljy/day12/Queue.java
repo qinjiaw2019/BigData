@@ -1,4 +1,4 @@
-package com.ljy.day11;
+package com.ljy.day12;
 
 import java.util.LinkedList;
 
@@ -33,5 +33,10 @@ public class Queue<E> {
 	//Çå¿Õ¶ÓÁÐ
 	public void clear() {
 		list.clear();
+	}
+	
+	@Override
+	public String toString() {
+		return list.toString();
 	}
 }
