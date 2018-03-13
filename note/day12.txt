@@ -1,0 +1,19 @@
+数组:
+	可以存储不用类型的数据
+	缺点:创建的是一个定值,只能存储固定长度的数据,一旦满了就不能再存了
+集合:
+	特点:可以存储不同类型的数据,存储空间会随着存储的数据的增大而增大
+	有点:可以更加合理的使用内存.
+	缺点:只能存放应用数据类型.	
+集合分类:
+1.Collection
+	List(ArrayList,LinkedList,vector)
+	Set(HashSet,TreeSet)
+3.Map
+	HashMap
+	TreeMap
+	
+	
+	
+	
+	
