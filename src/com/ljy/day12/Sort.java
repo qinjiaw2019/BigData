@@ -10,19 +10,19 @@ public class Sort {
 		for (int i = 0; i < 10; i++) {
 			array[i] = random.nextInt(20);
 		}
-		// System.out.println("Ã°ÅÝÅÅÐòÇ°");
+		// System.out.println("å†’æ³¡æŽ’åºå‰");
 		// System.out.println(Arrays.toString(array));
-		// System.out.println("Ã°ÅÝÅÅÐòºó");
+		// System.out.println("å†’æ³¡æŽ’åºåŽ");
 		// bubbleSort(array);
 		// System.out.println(Arrays.toString(array));
-		System.out.println("Ñ¡ÔñÅÅÐòÇ°");
+		System.out.println("é€‰æ‹©æŽ’åºå‰");
 		System.out.println(Arrays.toString(array));
-		System.out.println("Ñ¡ÔñÅÅÐòºó");
+		System.out.println("é€‰æ‹©æŽ’åºåŽ");
 		selectSort(array);
 		System.out.println(Arrays.toString(array));
 	}
 
-	// 1.Ã°ÅÝÅÅÐò
+	// 1.å†’æ³¡æŽ’åº
 	public static void bubbleSort(int[] array) {
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = 0; j < array.length - 1 - i; j++) {
@@ -36,7 +36,7 @@ public class Sort {
 
 	}
 
-	// 2.Ñ¡ÔñÅÅÐò
+	// 2.é€‰æ‹©æŽ’åº
 	public static void selectSort(int[] array) {
 		for (int i = 0; i < array.length - 1; i++) {
 			for (int j = i + 1; j < array.length; j++) {
