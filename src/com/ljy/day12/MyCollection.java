@@ -17,13 +17,17 @@ public class MyCollection {
 		c.add("c/c++");
 		c.add("php");
 		c.add("python");
+		c.add(new Object());
+		c.add(1);
 	}
 	
 	private void iterator() {
 		Iterator<Object> it = c.iterator();
 		while(it.hasNext()) {
 			Object object = it.next();
-			System.out.println(object);
+			if (object instanceof String) {
+				System.out.println(object);
+			}
 		}
 	}
 	

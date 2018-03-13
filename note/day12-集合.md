@@ -35,5 +35,26 @@ Collection<Object> c = new ArrayList<Object>();
 	<T> T[] toArray(T[] a)
 6.迭代器:
 	Iterator<E> iterator()//从集合中获取迭代器 
+		Iterator<Object> it = c.iterator();
+		while(it.hasNext()) {
+			Object object = it.next();
+			System.out.println(object);
+		}
+	注意:迭代器使用了一次全部对象遍历后,不能接着使用,因为指针已经指向集合最后位置了,如果需要再迭代,需要重新获取集合的迭代器.
+
+List:有序可重复
+	ArrayList
+	LinkedList
+
+Set:无序不可重复
+	HashSet
+	TreeSet
+	LinkedHashSet
+	
+		
+		
+		
+		
+		
 	
 	
