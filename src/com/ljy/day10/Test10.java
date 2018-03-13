@@ -1,7 +1,5 @@
 package com.ljy.day10;
 
-import com.ljy.day11.Demo;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -225,6 +223,7 @@ public class Test10 {
 
 
 //∂®“Â“Ï≥£
+@SuppressWarnings("serial")
 class NoNumException extends Exception{
 	public  NoNumException(String message){
 		super(message);

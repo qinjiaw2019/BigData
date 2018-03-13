@@ -69,7 +69,10 @@ List:
 		ListIterator<E> listIterator(int index)  在列表中的元素上返回列表迭代器（在适当的顺序），从列表中的指定位置开始。 
 	注意:再迭代时,迭代器不允许外界对正在操作的集合进行修改,所以再迭代时不能用list.remove这样的方式进行删除,可以用迭代器删除,如iterator.remove();
 	取子集:
-	
+	subList(int start,int end);
+
+List去重:
+通过重写自定义类的equals方法,然后调用list.contains(obj)方法结合去重
 		
 	
 	
