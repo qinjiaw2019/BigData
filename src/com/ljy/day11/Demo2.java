@@ -16,7 +16,8 @@ public class Demo2 {
         System.out.println(Arrays.toString(array));
     }
 
-    private static void sort(int[] array) {
+    @SuppressWarnings("unused")
+	private static void sort(int[] array) {
         long time = System.currentTimeMillis();
         /* int temp = 0;
        for (int i = 0; i < array.length - 1; i++) {
@@ -44,11 +45,11 @@ public class Demo2 {
 
 
 
-   /* //冒泡排序
+   /* //鍐掓场鎺掑簭
     public static void bubbleSort(int[] arr) {
-        for(int i=0;i<arr.length-1;i++){//控制的是整体的次数
-            for(int j=0;j<arr.length-1-i;j++){//控制的是确定一个元素需要比较的次数
-                if (arr[j]>arr[j+1]) {//利用^位运算符实现交换
+        for(int i=0;i<arr.length-1;i++){//鎺у埗鐨勬槸鏁翠綋鐨勬鏁�
+            for(int j=0;j<arr.length-1-i;j++){//鎺у埗鐨勬槸纭畾涓�涓厓绱犻渶瑕佹瘮杈冪殑娆℃暟
+                if (arr[j]>arr[j+1]) {//鍒╃敤^浣嶈繍绠楃瀹炵幇浜ゆ崲
                     arr[j] = arr[j] ^ arr[j+1];
                     arr[j+1] = arr[j] ^ arr[j+1];
                     arr[j] = arr[j] ^ arr[j+1];
@@ -57,11 +58,11 @@ public class Demo2 {
         }
     }*/
 
-   /* //选择排序
+   /* //閫夋嫨鎺掑簭
     public static void selectSort(int[] arr) {
-        for(int i=0;i<arr.length-1;i++){//控制的是整体的次数
-            for(int j=i;j<arr.length-1;j++){//控制的是确定一个元素需要比较的次数
-                if (arr[i]>arr[j+1]) {//利用^位运算符实现交换
+        for(int i=0;i<arr.length-1;i++){//鎺у埗鐨勬槸鏁翠綋鐨勬鏁�
+            for(int j=i;j<arr.length-1;j++){//鎺у埗鐨勬槸纭畾涓�涓厓绱犻渶瑕佹瘮杈冪殑娆℃暟
+                if (arr[i]>arr[j+1]) {//鍒╃敤^浣嶈繍绠楃瀹炵幇浜ゆ崲
                     arr[i] = arr[i] ^ arr[j+1];
                     arr[j+1] = arr[i] ^ arr[j+1];
                     arr[i] = arr[i] ^ arr[j+1];
@@ -71,7 +72,7 @@ public class Demo2 {
     }*/
 
 
-    //冒泡排序
+    //鍐掓场鎺掑簭
     public static void bubbleSort(int[] aar) {
         for (int i = 0; i < aar.length - 1; i++) {
             for (int j = 0; j < aar.length - 1 - i; j++) {
@@ -84,5 +85,5 @@ public class Demo2 {
         }
     }
 
-    //选择排序
+    //閫夋嫨鎺掑簭
 }
