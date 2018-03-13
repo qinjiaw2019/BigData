@@ -199,4 +199,34 @@ public class Test10 {
 
 
 
+	public static boolean checkPhoneNum(String str)throws NoNumException {
+
+			Long.parseLong(str);
+			if(!(str.length()==11)){
+				System.out.println("手机号不为11位");
+				return false;
+			}else if(str.charAt(1)<51 || str.charAt(1)>57){
+				System.out.println("手机号第二位不为3-8的数字");
+				return false;
+			}else if (!str.startsWith("1")) {
+				System.out.println("手机号第一位不为1");
+				return false;
+			}else {
+				System.out.println("手机号合法");
+				return true;
+			}
+		//判断手机号是否符合我们的需求 1.长度2.第二位数字3.第一位数字
+
+
+	}
+}
+
+
+
+
+//定义异常
+class NoNumException extends Exception{
+	public  NoNumException(String message){
+		super(message);
+	}
 }
