@@ -1,0 +1,32 @@
+森林:是由多棵树组成
+树:
+	特点:只有一个根节点,可以有0个或多个子节点
+二叉树:
+	一个节点最多只有两个直接的子节点的树
+	遍历方式:(都是从根节点开始遍历)
+		先序遍历(根 左 右)
+		中序遍历(左 根 右)
+		后序遍历(左 右 根)
+
+Set:
+	特点:无序不重复
+	
+	将String对象存入HashSet中不会重复,是因为String内部已经重写了hashCode方法和equals方法
+	add内部实现的String的hashCode和equals方法调用,实现元素的去重.
+	HashSet:
+		底层是hash表,线程不完全的.
+		实现元素不重复(唯一)的方法:
+			使用的是对象内部hashcode和equals方法,首先调用hashCode方法,比较两个对象的hash值,如果hash值不相等,可以认为是两个对象,不再去调用equals方法,如果相等,则再调用equals方法,这时,如果返回true,就认为是一个对象,否则是两个对象.
+		
+	TreeSet:
+		底层是二叉树,线程不安全的.
+		底层是基于NavigatableSet的实例.
+		存储数据时实现排序和去重的方法:
+			1.让存入TreeSet的元素实现Comparable借口中的compareTo方法实现排序.
+			2.保证元素唯一的方法:当compareTo方法返回0.
+			注意:存入TreeSet的元素必须实现Comparable接口或者应用Comparator接口(原因:set中的元素不能重复)
+				如果存入TreeSet中的元素没有这样做,会报ClassCastException异常
+			compareTo返回值:
+				>0:当前对象大于传进来的对象
+				<0:当前对象小于传进来的对象
+				=0:当前对象等于传进来的对象
