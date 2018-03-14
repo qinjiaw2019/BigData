@@ -1,11 +1,10 @@
 package com.ljy.day13;
 
 import java.util.TreeSet;
-
+@SuppressWarnings({"unchecked","rawtypes"})
 public class MyTreeSet {
-	@SuppressWarnings("unchecked")
+	
 	public static void main(String[] args) {
-		@SuppressWarnings("rawtypes")
 		TreeSet set = new TreeSet<>();
 		//set再存储字符串的时候,可以实现自动排序和去重
 		//原因:字符串实现了Comparable借口中的compareTo方法,String调用compareTo的地方是add方法.
@@ -22,7 +21,8 @@ public class MyTreeSet {
 
 }
 
-class Dog1 /*implements Comparable*/{
+@SuppressWarnings("rawtypes")
+class Dog1 implements Comparable{
 	String name;
 	int age;
 	public String getName() {
@@ -46,7 +46,7 @@ class Dog1 /*implements Comparable*/{
 	public String toString() {
 		return "Dog [name=" + name + ", age=" + age + "]";
 	}
-	/*@Override
+	@Override
 	public int compareTo(Object o) {
 		if (o instanceof Dog1) {
 			Dog1 dog1 = (Dog1) o;
@@ -54,6 +54,6 @@ class Dog1 /*implements Comparable*/{
 			return num==0?name.compareTo(dog1.name):num;
 		}
 		return 0;
-	}*/
+	}
 	
 }
