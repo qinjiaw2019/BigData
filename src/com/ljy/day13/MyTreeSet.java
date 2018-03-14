@@ -22,8 +22,7 @@ public class MyTreeSet {
 
 }
 
-@SuppressWarnings("rawtypes")
-class Dog1 implements Comparable{
+class Dog1 /*implements Comparable*/{
 	String name;
 	int age;
 	public String getName() {
@@ -47,7 +46,7 @@ class Dog1 implements Comparable{
 	public String toString() {
 		return "Dog [name=" + name + ", age=" + age + "]";
 	}
-	@Override
+	/*@Override
 	public int compareTo(Object o) {
 		if (o instanceof Dog1) {
 			Dog1 dog1 = (Dog1) o;
@@ -55,6 +54,6 @@ class Dog1 implements Comparable{
 			return num==0?name.compareTo(dog1.name):num;
 		}
 		return 0;
-	}
+	}*/
 	
 }
