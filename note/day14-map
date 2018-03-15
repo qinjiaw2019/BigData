@@ -1,0 +1,29 @@
+
+Map:通过键值对的形式存值,不属于Collection,但是属于集合存储的数据时一对一对的
+	Map是一个独立的接口
+	添加数据:
+	Map中的数据键是唯一的,值可以重复(可以同时有多个重复的值),一个键对应一个值,一个map可以存储多个键值对
+	向Map中存值得时候,如果有重复的键,则新添加的值会覆盖前一个值覆盖,并且将覆盖的值返回.如果键不重复,则返回null
+	Map<String,String>map;
+	V put(K key, V value)  将指定的值与此映射中的指定键关联（可选操作）。
+	void putAll(Map<? extends K,? extends V> m)  从指定的映射到这个Map（可选操作）复制所有的映射。
+	
+	删除数据:
+	remove(key)//在删除的同时会将当前元素返回
+	clear()
+	
+	取出数据:
+	get(key)
+	
+	遍历1 
+	得到所有键的集合,存储到set中,遍历set得到一个个的key,通过get(key)即可得到值
+	Set<K> keySet
+	
+	遍历2
+	将一个键值对放入一个entry(实体)中,再将这些实体放入set中
+	遍历set,可以获得这一个个实体entry,通过一个实体entry可分别得到key,value
+	Set<map.Entry<K,V>>entrySet()
+	
+	
+	HashMap:底层是哈希表,线程不安全的
+	TreeMap:底层是散列表,线程不安全的
