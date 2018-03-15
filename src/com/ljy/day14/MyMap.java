@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 public class MyMap {
@@ -23,10 +22,10 @@ public class MyMap {
 		Collection<String> values = map.values();
 		System.out.println(values);
 		
-		Set<Entry<String,String>> entrySet = map.entrySet();
-		Iterator<Entry<String, String>> iterator = entrySet.iterator();
+		Set<Map.Entry<String,String>> entrySet = map.entrySet();
+		Iterator<Map.Entry<String, String>> iterator = entrySet.iterator();
 		while(iterator.hasNext()) {
-			Entry<String, String> next = iterator.next();
+			Map.Entry<String, String> next = iterator.next();
 			String key = next.getKey();
 			String value = next.getValue();
 			System.out.println("key:"+key+" "+"value:"+value);

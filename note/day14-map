@@ -23,7 +23,11 @@ Map:通过键值对的形式存值,不属于Collection,但是属于集合存储�
 	将一个键值对放入一个entry(实体)中,再将这些实体放入set中
 	遍历set,可以获得这一个个实体entry,通过一个实体entry可分别得到key,value
 	Set<map.Entry<K,V>>entrySet()
-	
+	Map.Entry:得到的是每个键值对对应关系的映射关系类型的值(entry),存储到set中,遍历set,得到的元素就是映射关系类型的值(entry)
+			     是Map中的一个静态接口.
+			  
 	
 	HashMap:底层是哈希表,线程不安全的
 	TreeMap:底层是散列表,线程不安全的
+	
+	
