@@ -1,7 +1,7 @@
 package com.ljy.day14.test;
 
 import java.util.Comparator;
-
+//学生比较器
 public class ComWidthStudent implements Comparator<Student>{
 
 	@Override
