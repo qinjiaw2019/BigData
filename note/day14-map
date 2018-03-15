@@ -27,7 +27,15 @@ Map:通过键值对的形式存值,不属于Collection,但是属于集合存储�
 			     是Map中的一个静态接口.
 			  
 	
-	HashMap:底层是哈希表,线程不安全的
-	TreeMap:底层是散列表,线程不安全的
+	HashMap:底层是哈希表,线程不安全的,不能排序,只能去重(重写hashCode和equals方法)
+	TreeMap:底层是二叉树,线程不安全的,可以排序去重,方法两种
+	
+	对于Map来说,对于排序去重来说,不考虑Value,只考虑Key
+	
+	TreeMap的排序去重方法:
+		1.让作为元素的类去实现comparable接口的compareto方法
+		2.创建比较器,让比较器去实现Comparator接口的compare方法
+	
+	
 	
 	
