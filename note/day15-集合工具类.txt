@@ -1,2 +1,4 @@
 1.什么类型的数据可以作为TreeSet的key?
 	必须实现了Comparable或者Comparator接口的类
+	ArrayList,数组 不能作为TreeMap的key
+    注意:
