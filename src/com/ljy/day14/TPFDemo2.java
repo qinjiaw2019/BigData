@@ -71,7 +71,4 @@ public class TPFDemo2 {
 		
 	}
 	
-	//创建Person的比较器
-	//创建老师的比较器
-	
 }

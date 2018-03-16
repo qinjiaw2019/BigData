@@ -1,0 +1,2 @@
+1.什么类型的数据可以作为TreeSet的key?
+	必须实现了Comparable或者Comparator接口的类
