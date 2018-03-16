@@ -1,4 +1,35 @@
 1.什么类型的数据可以作为TreeSet的key?
 	必须实现了Comparable或者Comparator接口的类
 	ArrayList,数组 不能作为TreeMap的key
-    注意:
+          注意:元素能不能作为TreeMap的key,只与元素本身有关系,根元素内部的没有关系
+2.数组转集合:
+	1.集合的方法多,便于操作
+
+3.简单数据类型数组转集合:
+	整个数组会被作为一个整体存入集合,作为集合的一个元素.
+	List<int[]> asList = Arrays.asList(arr);
+4.引用类型数组转集合:
+	集合中的泛型就是数组中元素的类型
+	注意:由数组转成的集合,长度是固定的.
+	也就是从数组传承的集合的内存长度是任然是一个定值,不能增加删除,但是能修改,取值
+	String[]strs = {"Hello","Java","Php"};
+	List<String> list = Arrays.asList(strs);
+	//list.add("Hello");非法
+	asList2.set(0, "World");//合法
+	//asList2.remove(0);非法
+5.增强for循环:foreach()
+	不能直接用于map
+	原理:会将数组或者集合中的元素一次取出,
+		放入:前面定义的变量中,当次操作的就是该变量的值
+	遍历map:
+		1.先得到装着key或者entry的集合
+		2.使用foreach
+6.可变参数方法:
+	1.可变部分的参数可传可不传
+	2.可变部分只能放到参数列表的最后,且只能有一个可变参数.
+	3.可变参数相当于数组
+		private void test(int[]aar);
+		private void test(int...aar);
+		这两个函数相当于一个函数,不能放到一个类型中当做函数重载
+	4.当有固定类型的参数和可变类型的参数的重载方法同时存在时
+		优先调用固定类型参数的方法
