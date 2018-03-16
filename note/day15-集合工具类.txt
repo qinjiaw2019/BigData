@@ -33,3 +33,29 @@
 		这两个函数相当于一个函数,不能放到一个类型中当做函数重载
 	4.当有固定类型的参数和可变类型的参数的重载方法同时存在时
 		优先调用固定类型参数的方法
+		
+7.静态导入:
+	通过在原来用import的基础上添加static关键字,可以直接使用类中的方法,
+	但是需要通过.*的方式将类的方法在当前类中直接可见:
+	import static java.util.Arrays.*;
+	
+	区分不同包同名方法时,将其中的一个类使用全路径名的方式:
+	java.util.Arrays.asList();
+	
+8.运行时类Runtime:
+	每个java程序都有一个运行时类 实例,通过他可以与当前运行环境相关联,通过
+	RunTime.getRuntime()方法获取其实例对象
+9.集合操作辅助类Collections:
+	字典排序,默认是升序
+	注意:要想让Collctions中的元素能通过Collections的sort实现
+		字典排序,元素必须实现Comparable接口
+	Collections.reverseOrder():得到按字典排序的反转比较器
+	Collections.sort(list, comparator);按照自定义进行排序
+	Collections.reverse(list);按照现有顺序的反转
+	Collections.max(list, comparator):根据自定义比较器返回最大值
+	
+	
+	
+	
+	
+	

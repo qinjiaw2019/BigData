@@ -17,9 +17,17 @@ public class MyArrays {
 		asList2.set(0, "World");
 		test();
 		
+		testBinarySearch();
 	}
 	
 	private static void test(int...arr) {
 		System.out.println("Hello");
+	}
+	
+	private static void testBinarySearch() {
+		int []aar = {1,2,3,4,5,6};
+		int i = 4;
+		int index = Arrays.binarySearch(aar, i);
+		System.out.println("二分查找:"+index);
 	}
 }
