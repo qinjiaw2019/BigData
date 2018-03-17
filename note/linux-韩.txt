@@ -107,6 +107,24 @@ unalias ljy:取消别名
 使用 type -a [命令]  查看一个命令是别名还是就是命令本身
 别名优先,如果系统中有别名和另一个实际命令相同,那么输入命令名时会优先执行别名,要跳过别名使用实际的命令,直接在命令前加\,如\ls
 
+永久别名:
+/etc/bashrc   shell 的配置文件之一
+配置永久别名:
+1.vi /etc/bashrc
+2.在该文件末尾添加:
+	alias ljy='date' #将ljy作为输出日期命令date的别名
+3.退出编辑保存
+4.执行 source /etc/bashrc  即可生效
+
+查看命令的帮助信息:
+	ls --help:
+	cat --help
+
+
+date 命令:
+date +%F :2018-03-17
+touch `date +%F`_file.txt :创建时间格式文件名的文件
+
 xshell端从windows传文件到linux的步骤:
 1.将当前目录切换至要传文件至linux的目录
 2.ctrl+alt+f打开传送文件回话[不需要下载提示的xfp..],会新建一个sftp:/[目标文件夹]>的回话

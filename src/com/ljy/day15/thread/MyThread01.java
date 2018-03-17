@@ -1,7 +1,5 @@
 package com.ljy.day15.thread;
 
-import java.util.WeakHashMap;
-
 public class MyThread01 {
 	
 	public static void main(String[] args) {
@@ -24,5 +22,6 @@ public class MyThread01 {
 	protected void finalize() throws Throwable {
 		System.out.println("进行垃圾回收了");
 		super.finalize();
+		
 	}
 }
