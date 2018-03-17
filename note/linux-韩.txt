@@ -46,7 +46,84 @@ swap:交换分区:
 	
 
 软件安装:
-方案一:最小方案
-方案二:严格按照运维规范定制安装
+方案一:最小方案 
 
 kDOWP:黑匣子(消耗一部分内存来记录内核尤其是崩溃事件的记录,用于供专家维护),建议关闭
+
+Shell:解释器,把命令解释给Linux内核执行
+
+使用Shell的两种方式
+1.输入命令                                                效率相对低一些,适合少量的工作
+2.Shell Script (Shell 脚本) 效率高 适合完成一些复杂,重复性的工作
+3.shell 语法:
+命令 选项 参数
+如
+ls
+ls -a
+ls -a /home
+命令:整条shell命令的主题
+选项:会影响命令的行为,多个选项可以放到一起
+	ls -a -l /home
+	ls -al /home
+参数:命令作用的对象
+
+Linux 命令:
+date:输出当前的时间
+useradd [用户名] 创建一个用户
+passwd [用户名] 给创建的用户设置密码
+hostname:输出域名
+whoami :输出当前用户
+bush -version:显示当前系统的版本
+ls:显示当前目录下的文件(蓝色文件夹,除此以外都是文件)
+ls -a(ls --all):显示当前目录下的所有文件(包含隐藏文件)
+tab键补齐,也叫唯一补齐
+
+
+命令编辑
+
+ctrl+a 将光标移到命令行内容的开始位置
+ctrl+e 将光标移到鼠标末尾
+ctrl+l(clear) :清屏
+ctrl+k 将光标后的内容全部删除(只针对当前正在编辑这行命令的内容)
+ctrl+u 将光标前的内容全部删除(只针对当前正在编辑这行命令的内容)
+ctrl+c 终止当前正在执行的程序
+ctrl+r 搜索历史命令,利用关键词
+ctrl+d 相当于exit
+
+esc .  应用上次命令的最后一个参数
+如:
+ls /etc/sysconfig/network-scripts/ifcfg-ens33
+cat [esc]. -->按一下esc后松手,再按一次点,会自动补齐上一次的最后一个参数
+
+history:显示调用命令的历史
+!+显示的历史行数:重新调用历史:!20 表示执行历史命令中的第20条命令
+
+!字符串:搜索历史命令中最近一个以xxxxx开头的命令,如 !cat
+
+alias ljy='cat /etc/sysconfig/network-scripts/ifcfg-ens33'
+表示将ljy作为命令cat /etc/sysconfig/network-scripts/ifcfg-ens33的别名,直接在命令行中输入别名即可实现相同的功能
+unalias ljy:取消别名
+
+使用 type -a [命令]  查看一个命令是别名还是就是命令本身
+别名优先,如果系统中有别名和另一个实际命令相同,那么输入命令名时会优先执行别名,要跳过别名使用实际的命令,直接在命令前加\,如\ls
+
+xshell端从windows传文件到linux的步骤:
+1.将当前目录切换至要传文件至linux的目录
+2.ctrl+alt+f打开传送文件回话[不需要下载提示的xfp..],会新建一个sftp:/[目标文件夹]>的回话
+3.输入help命令可看到有put的命令
+4.put windows目标文件绝对路径 回车等待传送完成即可
+
+linux 中jdk配置
+1.vi /etc/profile 在最后追加如下配置,注意对应的路径以及jdk版本
+2.配置完成后,输入命令:source /etc/profile  
+3.验证是否配置成功
+
+#jdk 
+export JAVA_HOME=/java/jdk1.8.0_161
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+
+
+在linux中凡是以.开始的文件都是隐藏的文件,其中一个隐藏文件的文件名包含.
