@@ -1,0 +1,34 @@
+DVD 管理系统
+1.用户
+	1.用户信息
+	2.
+2.后台管理
+
+功能:
+	  登录
+	  	用户登录
+	  	后台管理员登录
+	  
+	  新增
+	  	管理员操作
+	  查看
+	  	管理员查看所有DVD情况
+	  	用户查看所有DVD情况
+	  	
+	  删除
+	  	管理员删除DVD
+	  借出
+	  	用户借DVD
+	  归还
+	  	用户归还DVD
+	  退出
+	
+类:
+	User<--Person
+	Admin<--Person
+	DVD
+	DVDStore
+	DVDManager
+	
+	SystemManager
+	

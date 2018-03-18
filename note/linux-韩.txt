@@ -131,6 +131,7 @@ xshell端从windows传文件到linux的步骤:
 3.输入help命令可看到有put的命令
 4.put windows目标文件绝对路径 回车等待传送完成即可
 
+
 linux 中jdk配置
 1.vi /etc/profile 在最后追加如下配置,注意对应的路径以及jdk版本
 2.配置完成后,输入命令:source /etc/profile  
