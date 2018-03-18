@@ -2,6 +2,7 @@ package com.ljy.dvd;
 
 import java.util.Scanner;
 
+import com.ljy.dvd.bean.Admin;
 import com.ljy.dvd.bean.DVD;
 import com.ljy.dvd.bean.DVDRole;
 import com.ljy.dvd.bean.User;
@@ -73,7 +74,7 @@ public class Main {
 								break;
 							case ADMIN:
 								EXITLOGIN: do {
-									System.out.println("菜单: 1.我的信息\t2.DVD列表\t3.新增DVD\t4.删除DVD\t5退出登录");
+									System.out.println("菜单: 1.我的信息\t2.DVD列表\t3.用户列表\t4.删除用户\t5.新增DVD\t6.删除DVD\t7退出登录");
 									switch (scanner.nextInt()) {
 									case 1:
 										System.out.println("我的信息:");
@@ -84,6 +85,14 @@ public class Main {
 										dvdRole.showDVDList();
 										break;
 									case 3:
+										((Admin)dvdRole).showUserLists();
+										break;
+									case 4:
+										System.out.println("请输入要删除的用户账户");
+										String deleteAccount = scanner.next();
+										((Admin)dvdRole).deleteUser(deleteAccount);
+										break;
+									case 5:
 										do {
 											System.out.println("请输入DVD编号:");
 											String dvdId = scanner.next();
@@ -106,13 +115,13 @@ public class Main {
 											}
 										} while (true);
 										break;
-									case 4:
+									case 6:
 										System.out.println("请输入要删除的DVD 编号:");
 										String deleteId = scanner.next();
 										boolean b = DVDManager.getInstance().deleteDVD(deleteId);
 										System.out.println(b ? "删除成功" : "删除失败");
 										break;
-									case 5:
+									case 7:
 										break EXITLOGIN;
 									default:
 										break;

@@ -2,10 +2,13 @@ package com.ljy.dvd.manager;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import com.ljy.dvd.bean.Admin;
+import com.ljy.dvd.bean.DVD;
 import com.ljy.dvd.bean.DVDRole;
 import com.ljy.dvd.bean.DVDRole.RoleType;
+import com.ljy.dvd.bean.User;
 
 public class UserManager {
 	private List<DVDRole> roles = new ArrayList<>();
@@ -57,4 +60,56 @@ public class UserManager {
 		roles.add(dvdRole);
 	}
 
+	/**
+	 * 显示用户列表
+	 */
+	public void showUserList() {
+		System.out.println("账户\t用户名");
+		for(DVDRole role:roles) {
+			if (role.getRoleType()==RoleType.USER) {
+				System.out.println(role.getAccount()+"\t"+role.getName());
+				List<DVD> list = ((User)role).getBorrowDVDList();
+				if (list.size()>0) {
+					System.out.println("未还DVD:");
+					for(DVD dvd:list) {
+						System.out.println(dvd.getId()+" "+dvd.getName());
+					}
+				}else {
+					System.out.println("没有未还DVD!");
+				}
+			}
+			System.out.println();
+		}
+	}
+	
+	public boolean deleteUser(String account) {
+		//1.判断用户是否在列表中
+		boolean tag = false;
+		for(DVDRole role:roles) {
+			if (role.getAccount().equals(account)) {
+				if (role.getRoleType()==RoleType.ADMIN) {
+					System.out.println("没有删除管理员的权限");
+					return false;
+				}
+			}else {
+				tag = true;
+			}
+		}
+		
+		if (!tag) {
+			System.out.println("没有该用户");
+			return false;
+		}
+		ListIterator<DVDRole> iterator = roles.listIterator();
+		while(iterator.hasNext()) {
+			DVDRole next = iterator.next();
+			if (next.getAccount().equals(account)) {
+				if(next.getRoleType()==RoleType.USER) {
+					iterator.remove();
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }

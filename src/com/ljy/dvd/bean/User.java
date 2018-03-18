@@ -11,6 +11,10 @@ public class User extends DVDRole {
 	private static final long serialVersionUID = 9174241987233327482L;
 	private List<DVD> borrowList = new ArrayList<>();
 
+	public List<DVD> getBorrowDVDList(){
+		return this.borrowList;
+	}
+	
 	@Override
 	public void showDVDList() {
 		DVDManager.getInstance().showDVDList(this);
