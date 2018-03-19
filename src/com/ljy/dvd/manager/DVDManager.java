@@ -63,10 +63,13 @@ public class DVDManager {
 	 * @return
 	 */
 	public boolean isExistDVD(String dvdId) {
+		boolean tag = false;
 		for (DVD dvd : list) {
-			return dvd.getId().equals(dvdId);
+			if(dvd.getId().equals(dvdId)) {
+				tag = true;
+			}
 		}
-		return false;
+		return tag;
 	}
 
 	/**

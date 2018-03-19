@@ -90,9 +90,9 @@ public class UserManager {
 				if (role.getRoleType()==RoleType.ADMIN) {
 					System.out.println("没有删除管理员的权限");
 					return false;
+				}else {
+					tag = true;
 				}
-			}else {
-				tag = true;
 			}
 		}
 		
@@ -105,6 +105,10 @@ public class UserManager {
 			DVDRole next = iterator.next();
 			if (next.getAccount().equals(account)) {
 				if(next.getRoleType()==RoleType.USER) {
+					if (((User)next).getBorrowDVDList().size()>0) {
+						System.out.println("该用户还有未归还的DVD,不能删除");
+						return false;
+					}
 					iterator.remove();
 					return true;
 				}
