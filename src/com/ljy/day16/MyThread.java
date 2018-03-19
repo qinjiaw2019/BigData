@@ -4,6 +4,20 @@ package com.ljy.day16;
 //   -----因为这样创建的线程没有执行任务,没有意义
 
 //4个售票员同时买票
+/*
+ * 产生负数的原因:
+ * 	1.多个线程操作了一个数据
+ * 	2.共享语句有多条,一个线程抢到cpu,没有执行完,cpu被抢走,当再次抢到cpu的时候,会执行后面的语句,造成错误的发生
+ * 解决方案:
+ * 	在代码中使用同步代码块(同步锁)
+ * 	解释:在某一段任务中,同一时间只允许有一个线程执行任务,其他线程即使抢到cpu也无法进入代码块,
+ * 	          只已经进入代码块的线程执行完后,其他线程才能执行这个任务
+ * 对象锁的要求:1.必须是对象 2.必须被对个线程共享
+ * 同步代码块特点:由于每次都要判断锁,降低了整体的执行效率
+ * 总结:什么情况会使用同步代码块
+ * 1.多个线程共享一个数据
+ * 2.至少有两个线程
+ */
 public class MyThread {
 	public static void main(String[] args) {
 		// 方式1
@@ -45,23 +59,28 @@ public class MyThread {
  *
  */
 class Ticket implements Runnable {
+	// 创建一个对象锁
 	private Object object = new Object();
 	private int num = 20;
+	private boolean wan = false;
 
 	@Override
 	public void run() {
-		synchronized (object) {
-			while (num >= 0) {
-				try {
-					Thread.sleep(100);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				System.out.println(Thread.currentThread().getName() + " " + num--);
-			}
+		while (!wan) {
+			synchronized (object) {
 
+				if (num > 0) {
+					try {
+						Thread.sleep(0);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					System.out.println(Thread.currentThread().getName() + " " + num--);
+				} else {
+					wan = true;
+				}
+			}
 		}
-		System.out.println(Thread.currentThread().getName() + " 票卖完了");
 	}
 
 }
