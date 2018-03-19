@@ -1,5 +1,7 @@
 package com.ljy.dvd.manager;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -115,5 +117,17 @@ public class UserManager {
 			}
 		}
 		return false;
+	}
+	
+	public void saveAllRole(String path) {
+		List<DVDRole> dvdRoles = UserManager.getInstance().getDVDRoles();
+		ObjectOutputStream oos; 
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(path));
+			oos.writeObject(dvdRoles);
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

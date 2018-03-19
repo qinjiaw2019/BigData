@@ -110,6 +110,9 @@ public class Main {
 												dvd.setId(dvdId);
 												dvd.setState(State.BACK);
 												boolean addResult = DVDManager.getInstance().addDVD(dvd);
+												if (addResult) {
+													DVDManager.getInstance().saveAllDVD(SystemManager.ALLDVDS);
+												}
 												System.out.println(addResult ? "新增DVD成功" : "新增失败");
 												break;
 											}
@@ -171,6 +174,7 @@ public class Main {
 								dvdRole.setRoleType(RoleType.USER);
 								UserManager.getInstance().addDVDRole(dvdRole);
 								System.out.println("注册成功");
+								UserManager.getInstance().saveAllRole(SystemManager.ALLROLES);
 								break REGIST;
 							}
 						} while (true);

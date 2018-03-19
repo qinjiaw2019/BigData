@@ -1,18 +1,15 @@
 package com.ljy.dvd.manager;
 
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.ljy.dvd.bean.DVD;
 import com.ljy.dvd.bean.DVDRole;
 
 public class SystemManager {
-	private static final String ALLROLES = "F:\\work\\java\\eclipseProjects\\BigData\\src\\com\\ljy\\dvd\\allroles";
-	private static final String ALLDVDS = "F:\\work\\java\\eclipseProjects\\BigData\\src\\com\\ljy\\dvd\\alldvds";
+	public static final String ALLROLES = "F:\\work\\java\\eclipseProjects\\BigData\\src\\com\\ljy\\dvd\\allroles";
+	public static final String ALLDVDS = "F:\\work\\java\\eclipseProjects\\BigData\\src\\com\\ljy\\dvd\\alldvds";
 
 	// 初始化系统
 	public static boolean initSystem() {
@@ -34,28 +31,12 @@ public class SystemManager {
 
 	// 存储DVD
 	private static void saveAllDVD() {
-		List<DVD> dvdList = DVDManager.getInstance().getDVDList();
-		ObjectOutputStream oos; 
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream(ALLDVDS));
-			oos.writeObject(dvdList);
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		DVDManager.getInstance().saveAllDVD(ALLDVDS);
 	}
 
 	// 存储用户包括管理员
 	private static void saveAllRole() {
-		List<DVDRole> dvdRoles = UserManager.getInstance().getDVDRoles();
-		ObjectOutputStream oos; 
-		try {
-			oos = new ObjectOutputStream(new FileOutputStream(ALLROLES));
-			oos.writeObject(dvdRoles);
-			oos.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		UserManager.getInstance().saveAllRole(ALLROLES);
 	}
 
 	public static boolean doLogin(String account, String pwd) {

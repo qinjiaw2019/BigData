@@ -1,5 +1,7 @@
 package com.ljy.dvd.manager;
 
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -165,4 +167,17 @@ public class DVDManager {
 		}
 		return false;
 	}
+	
+	public void saveAllDVD(String path) {
+		List<DVD> dvdList = DVDManager.getInstance().getDVDList();
+		ObjectOutputStream oos; 
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(path));
+			oos.writeObject(dvdList);
+			oos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
