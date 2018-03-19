@@ -1,4 +1,4 @@
-package com.ljy.day16.单例子的同步问题;
+package com.ljy.day16.单例的同步问题;
 
 /**
  * <pre>
