@@ -58,4 +58,7 @@ class SingleInstance1 {
 	}
 
 	// 工作的位置
+	
+	
+	
 }
