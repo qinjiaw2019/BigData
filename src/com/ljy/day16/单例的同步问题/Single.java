@@ -48,7 +48,7 @@ class SingleInstance {
 
 // 饿汉式 不存在线程安全问题
 class SingleInstance1 {
-	private static SingleInstance1 instance = new SingleInstance1();
+	private final  static SingleInstance1 instance = new SingleInstance1();
 
 	private SingleInstance1() {
 	}
@@ -59,6 +59,17 @@ class SingleInstance1 {
 
 	// 工作的位置
 	
+}
+
+//静态内部类方式实现单利
+class SingleInstance2{
 	
+	private static final class LazyHolder{
+		private final static  SingleInstance2 INSTANCE = new SingleInstance2();
+	}
+	private SingleInstance2() {};
 	
+	public static final SingleInstance2 getInstance() {
+		return LazyHolder.INSTANCE;
+	}
 }
