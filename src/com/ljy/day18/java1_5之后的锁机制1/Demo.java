@@ -1,4 +1,4 @@
-package com.ljy.day18.java1_5之后的锁机制;
+package com.ljy.day18.java1_5之后的锁机制1;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 		同步代码
  * }//释放锁
  * 
- * 在jdk1.5之后出现的新的同步机制----Lock  显式用不
+ * 在jdk1.5之后出现的新的同步机制----Lock  显式同步
  * 相当于将锁面向对象,使用内部提供的方法实现功能
  * 原理:
  * 创建Lock的子对象,通过子对象干活,用ReentrantLock实现类来创建
