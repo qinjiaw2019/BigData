@@ -1,0 +1,119 @@
+--文件管理
+Linux中一切皆文件
+
+命令:
+which 命令:看一个命令在哪个位置
+如:which ls:
+	alias ls='ls --color=auto'
+			/usr/bin/ls
+pwd  查看当前目录在哪
+
+
+目录结构:
+linux都遵循FSH(FileSystem Hierarchy Standard)标准
+淡蓝色文件夹是一个链接,如/bin
+bin 普通用户使用的命令 /user/bin
+sbin 管理员使用的命令
+root root用户的HOME
+dev 设备文件
+tty:
+/dev/pts/0 终端文件
+
+/dev/null 回收站(填不满)
+/dev/random 随机数文件
+/dev/zero ling零设备文件
+
+ll /dev/sd*
+brw-rw----. 1 root disk 8, 0 Mar 19 20:13 /dev/sda
+brw-rw----. 1 root disk 8, 1 Mar 19 20:13 /dev/sda1
+brw-rw----. 1 root disk 8, 2 Mar 19 20:13 /dev/sda2
+
+home 存储普通用户'根'目录
+[root@ljy ~]# ls /home/
+ljy
+
+proc  虚拟的文件徐彤,反应出来的是内核,进程信息或实时状态
+
+usr  系统文件 相当于windows的c:\windows
+	/usr/local 软件安装文件
+	/usr/bin 普通用户使用的应用程序
+	/usr/sbin 管理员使用的应用程序
+	/usr/lib 库文件 32bit
+	/usr/lib64 64bit
+
+boot 存放的系统启动相关的文件 例如:kernel,grub(引导安装程序)
+
+**********************************|
+etc 配置文件(系统相关,一些应用的配置文件)**
+**********************************|
+
+temp 临时文件(全局可写,进程产生的临时文件)
+
+var 存放时的是一些变化文件,比如数据库,日子,邮件
+	mysql: /var/lib/mysql
+	vsftpd: /var/ftp
+	mail: /var/mail	
+	log: /var/log
+
+==设备(只要指存储设备)挂在目录==
+media   移动设备默认的挂载点
+mnt     手工挂载设备的挂载点
+misc    automount进程挂载
+net 
+
+
+文件定位 路径
+路径的作用:定位文件
+tree -L 2 /etc/  列出etc下的目录结构(-L 2 最多列出两层)
+~表示对应的用户目录,主要用于绝对路径
+touch ~/file.txt  在当前用户的用户文件夹下创建一个file.txt的文件
+touch ~ljy/file.txt 在用户ljy的用户目录下创建一个file.txt
+	~ljy = /home/ljy/
+	
+
+
+
+
+
+
+
+
+
+
+
+安装GCC:
+在编译安装 GCC 之前，系统里必须先要通过 yum 安装老版本的 GCC 和依赖库。
+如果是在 x86_64 系统下编译的话，还需要安装 libgcc.i686 glibc-devel.i686 才行。
+
+yum install -y gcc texinfo-tex flex zip libgcc.i686 glibc-devel.i686
+当然，如果是在 CentOS 5 x86_64 系统下安装，则是如下命令：
+
+yum install -y gcc texinfo-tex flex zip libgcc.i386 glibc-devel.i386
+	
+	yum install gcc
+	如果有
+	安装tree命令
+	1.上传tree-1.7.0.tgz
+	2.解压tree-1.7.0.tgz:
+	  tar -zxvf tree-1.7.0.tgz
+	3.进入到解压文件夹
+		cd tree-1.7.0
+	4.安装:
+	 make install
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
