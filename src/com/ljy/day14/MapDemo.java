@@ -58,7 +58,7 @@ public class MapDemo {
 		// 遍历字符数组
 		//由于Character有自动的排序功能(实现了Comparable接口,也重写了HashCode和equale方法)
 		//又对于map来说,是根据key进行排序的
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0;  i < array.length; i++) {
 			// 过滤,只要字母
 			if ((array[i] >= 'a' && array[i] <= 'z') || (array[i] >= 'A' && array[i] < 'Z')) {
 				Integer value = map.get(array[i]);
