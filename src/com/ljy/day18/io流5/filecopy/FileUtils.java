@@ -9,19 +9,24 @@ import java.io.IOException;
  * <pre>
  * 文本文件拷贝
  * </pre>
+ * 
  * @author lijiayan_mail@163.com
  * @createTime 2018年3月21日
  */
 public class FileUtils {
 	/**
 	 * 文本文件拷贝
-	 * @param sourcePath 源文件
-	 * @param targetPath 目标文件
+	 * 
+	 * @param sourcePath
+	 *            源文件
+	 * @param targetPath
+	 *            目标文件
 	 * @return
 	 */
-	public static boolean copy(String sourcePath,String targetPath) {
-		//读文件
-		FileReader fr=null;
+	public static boolean copy(String sourcePath, String targetPath) {
+		// 读文件
+		FileReader fr = null;
+		// 写文件
 		FileWriter fw = null;
 		boolean result = false;
 		try {
@@ -36,19 +41,20 @@ public class FileUtils {
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			closeStream(fr,fw);
+		} finally {
+			closeStream(fr, fw);
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 关闭流
+	 * 
 	 * @param closes
 	 */
-	private static void closeStream(Closeable...closes) {
-		for(Closeable closeable:closes) {
-			if (closeable!=null) {
+	private static void closeStream(Closeable... closes) {
+		for (Closeable closeable : closes) {
+			if (closeable != null) {
 				try {
 					closeable.close();
 				} catch (IOException e) {
