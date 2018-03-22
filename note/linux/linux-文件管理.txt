@@ -70,13 +70,28 @@ touch ~/file.txt  在当前用户的用户文件夹下创建一个file.txt的文
 touch ~ljy/file.txt 在用户ljy的用户目录下创建一个file.txt
 	~ljy = /home/ljy/
 	
+cd - 回到上次目录
 
+mv 移动
+mv file /home/ljy/temp/   将当前目录下的file文件移动到/home/ljy/temp/目录下
+mv file /home/ljy/temp/f.txt 将当前目录下的file移动到/home/ljy/temp/下并重命名为f.txt
 
+rm -rf {file1,file2,file3} 删除当前目录下的三个文件
+touch ./{file1,file2,file3} 在当前目录下创建file1,file2,file3
 
+rm -rf f*  删除当前目录下以f开始的文件或者文件夹(不包含隐藏文件) -r表示递归
 
+wget ftp://xx.xx.xx.xx/b.txt 从文件服务器xx.xx.xx.xx上下载b.txt文件
+windows的换行符 ^M$
+linux的换行符 $
+将window是文件转化成linux:
+1.安装dos2unix
+yum install dos2unix
 
-
-
+head /etc/passwd 查看passwd的前10(默认)行
+head -2 /etc/passwd 查看passwd的前2行
+tail 2 /etc/passwd 查看passwd的后2行
+tail /etc/passwd 查看passwd的后10(默认)行
 
 
 
@@ -97,7 +112,7 @@ yum install -y gcc texinfo-tex flex zip libgcc.i386 glibc-devel.i386
 	2.解压tree-1.7.0.tgz:
 	  tar -zxvf tree-1.7.0.tgz
 	3.进入到解压文件夹
-		cd tree-1.7.0
+	 cd tree-1.7.0
 	4.安装:
 	 make install
 	
