@@ -95,8 +95,6 @@ public class Demo {
 			byte[]bytes = new byte[in.available()];
 			int num = in.read(bytes);
 			System.out.println(new String(bytes,0,num));
-			System.out.println("======================================");
-			System.out.println(num);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

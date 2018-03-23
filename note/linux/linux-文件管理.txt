@@ -43,9 +43,9 @@ usr  系统文件 相当于windows的c:\windows
 
 boot 存放的系统启动相关的文件 例如:kernel,grub(引导安装程序)
 
-**********************************|
-etc 配置文件(系统相关,一些应用的配置文件)**
-**********************************|
+**********************************
+*etc配置文件(系统相关,一些应用的配置文件)*
+**********************************
 
 temp 临时文件(全局可写,进程产生的临时文件)
 
@@ -92,8 +92,16 @@ head /etc/passwd 查看passwd的前10(默认)行
 head -2 /etc/passwd 查看passwd的前2行
 tail 2 /etc/passwd 查看passwd的后2行
 tail /etc/passwd 查看passwd的后10(默认)行
+tail -f /var/log/messages 获取日志的最后10行,并动态更新...
+	=tailf /var/log/message
+wc -l /var/log/messages  查看统计日志文件message的行数
+8255 /var/log/messages
 
+less /var/log/messages 分页显示日志文件 上下键翻页,按q结束
 
+grep 'root' /var/log/messages  过滤有root的行
+grep '^root' /var/log/messages 过滤以root开头的行
+grep 'root#' /var/log/messages 过滤以root结尾的行
 
 
 安装GCC:

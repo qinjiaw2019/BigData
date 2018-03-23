@@ -47,7 +47,7 @@ public class Demo6 {
  * 3.BTest通过构造方法的方式将Test类的对象转入内部,并赋给2中的变量
  * 4.在实现功能的时候,调用Test类的变量实现基本功能,让自己实现增强的功能
  * <hr/>
- * <font color='red' size=3><strong>适配器模式</strong></font>
+ * <font color='#ff0000' size=3><strong>适配器模式</strong></font>
  * 对适配器涉及模式的理解:通常理解成变相的装饰者模式
  * 要求在子类中只想使用play方法
  * 分析:SubZiTest继承至ZiTest,ZiTest实现了Inter接口
