@@ -103,6 +103,34 @@ grep 'root' /var/log/messages  过滤有root的行
 grep '^root' /var/log/messages 过滤以root开头的行
 grep 'root#' /var/log/messages 过滤以root结尾的行
 
+在vim编辑器的命令模式下:
+	0或者^ 光标移动到行首
+	$ 光标移动到行尾
+	gg 光标移动到文本开始的位置
+	G  光标移动到文本尾部位置
+	/^d 查找以d开头的所有行
+	/txt$ 查找以txt结尾的行
+	y 复制
+	yy 复制一行
+	3yy 复制3行
+	ygg 从光标位置一直复制到文件头部
+	yG 从光标位置一直复制到文件尾部
+	d 删除 
+	dd 删除一行
+	3dd 删除3行
+	dgg从光标位置到文件头部全部删除
+	dG 从光标位置到文件尾部全部删除
+	x 删除光标所在的位置
+	p 粘贴
+	D 从光标处删除到行尾
+	u undo撤销
+	^r redo 重做
+	r 可以用来修改一个字符
+	o 另起一行进入插入模式
+	A 光标移动到行尾,并进入插入模式
+	
+
+
 
 安装GCC:
 在编译安装 GCC 之前，系统里必须先要通过 yum 安装老版本的 GCC 和依赖库。

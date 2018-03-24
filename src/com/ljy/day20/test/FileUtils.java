@@ -57,7 +57,7 @@ public class FileUtils {
 
 	/**
 	 * 找出文件夹下后缀名名为指定后缀名的文件
-	 * @param Extension
+	 * @param extension
 	 * @param dir
 	 * @return
 	 */
