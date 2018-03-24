@@ -129,6 +129,64 @@ grep 'root#' /var/log/messages 过滤以root结尾的行
 	o 另起一行进入插入模式
 	A 光标移动到行尾,并进入插入模式
 	
+多行插入
+	1.ctrl+v 将光标移动到多行的前面
+	2.I
+	3.输入要插入的内容
+	4.esc键 稍微等一会就能看到效果了
+多行替换(单列)
+	1.ctrl+v 进入可视块
+	2.移动光标选中一行
+	3.输入r(进入替换模式)
+	4.输入要替换的内容
+ctrl+s windows下是保存,linux下是锁住屏幕,不显示操作,再按ctrl+q才显示之前ctrl+s下的所有操作
+:模式下:
+	:10 进入第十行
+	:w 保存
+	:q 退出
+	:wq 保存并退出
+	:q! 不保存并退出
+	:wq! 强制保存退出
+	:x 保存并退出
+	:X 给文件加秘密
+	
+	:1,5 s/root/ljy 在1到5行将root替换成ljy(只替换第一列)
+	:1,$ s/root/ljy 1到最后一行替换
+	:1,$ s/root/ljy/g 1到最后一行全局(globe)全局替换    = % s/root/ljy/g
+	:,8 s/root/ljy/g 当前行道第8行全局替换
+	:% s/^#// 将所有行开头的#替换为空
+	:% s@/ect/aaa@/var/log/@g  将文本中的/ect/aaa换成/var/log  所以以上的/可以换成# @等字符,方便处理有/的情况
+	:% s/.*/#&/g 将所有行之前加#  .*代表整行  &之前选中的整行的引用
+	:w ./list1.txt 将当前文件另存为当前目录下的list1.txt文件
+	:1,5 w ./list2.txt 将当前文件的第1到5行另存为list2.txt文件
+	:r ./list 将当前目录下的list文件读到当前行之后
+	:5 r /etc/hosts 将/etc/hosts文件读到当前编辑文本的第5行之后
+
+vi/vim的环境设置
+:set number /set nu  设置行号
+:set ic 忽略大小写 ignore case
+:set ai 自动缩进
+:set list 显示控制字符
+:set nonu 取消行号
+:set noai 取消自动缩进
+:set nolist 取消显示控制字符
+
+永久vi/vim的环境设置:
+	1.切换到root 用户下
+	2.vim ~/.vimrc
+	3.输入set ai
+		 set nu
+
+同时编辑两个文件
+vim -o Hello.java list  -o是垂直分割   -O水平分割
+按^ww(ctrl ww)切换
+:qall 全部退出
+在编辑模式下 ctrl+p可以根据已经输入的单词的前部分查找全文中具有相同部分的单词,上下键进行选择,白色为选中状态,回车完成补全
+vimdiff -O list list1  对比两个文件
+
+
+
+
 
 
 
