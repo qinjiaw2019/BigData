@@ -15,7 +15,7 @@ public class FindFile {
 		if (extension == null || dir == null) {
 			return;
 		}
-		if (dir.isFile() && dir.getName().endsWith(extension)) {
+		if (dir.isFile() && dir.getName().endsWith(extension) && !dir.getName().equals("zong.txt")) {
 			this.list.add(dir);
 		}else {
 			File[] files = dir.listFiles();

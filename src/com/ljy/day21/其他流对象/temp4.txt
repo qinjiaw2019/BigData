@@ -1,0 +1,6 @@
+#2018/3/26
+#Mon Mar 26 15:08:57 CST 2018
+age=35
+name=zhangsan
+介绍=zhangsan是个人才
+sex=男
