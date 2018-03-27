@@ -13,7 +13,7 @@ public class Demo {
         //long型号的时间
         long time= System.currentTimeMillis();
         System.out.println(time);
-        System.out.println("===========================");
+        System.out.println("=======================");
         new Demo().dateFormat();
         simpleDateFormat();
         calendar();

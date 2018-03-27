@@ -10,7 +10,7 @@ public class 听写 {
 		System.out.println(c);
 		
 		
-		System.out.println("===============");
+		System.out.println("");
 		int chenji = chenji(5);
 		System.out.println(chenji);
 	}
