@@ -22,8 +22,7 @@ public class Demo2 {
 	public static void main(String[] args) throws IOException {
 		//从键盘输入数据
 		//BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	 	@SuppressWarnings("resource")
-		BufferedReader reader = new BufferedReader(new FileReader(".\\src\\com\\ljy\\day21\\其他流对象\\temp.txt"));
+	 	BufferedReader reader = new BufferedReader(new FileReader(".\\src\\com\\ljy\\day21\\其他流对象\\temp.txt"));
 	 	//从文件输入文件
 	 	
 	 	//输出
@@ -39,5 +38,6 @@ public class Demo2 {
 	 	}
 	 	pw.flush();
 	 	pw.close();
+	 	reader.close();
 	}
 }
