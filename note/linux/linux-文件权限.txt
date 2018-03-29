@@ -1,0 +1,44 @@
+文件权限:可以赋予某个用户或组 能够以何种方式 访问某个文件
+ugo
+u:属主
+g:属组
+o:其他人
+ll显示文件列表时,出现的如下:
+-|rw-|r--|r--. 1 |root  |root    0 Mar 28 20:48 file1
+-|u  |g  |o      |属主        |属组
+
+权限类型    权值
+读[r]    4
+写[w]    2
+指向[x]   1
+
+修改文件的所有者所属组
+chow 用户名 文件名
+如:chown ljy01 file1   将文件file1的所有者改为ljy01
+修改文件的所属组
+chown .hr file1   将文件的所属组改为hr组
+chgrp it file1  将文件file1的所属组改为it
+
+同时修改文件的所有者和所属组
+chown ljy01.hr file1  将文件的所有者改为hr
+
+chown ljy01. file1  将文件的所有者改为ljy01,同时将文件的所属组改为ljy01的主组
+
+
+修改文件的权限
+chmod u+w file1   将文件所有者对文件的权限增加w权限
+chmod g+w file1   将文件所属组对文件的权限增加w权限
+chmod o=x file1   将文件对于其他人(不包含所有者和所属组的成员)对文件的权限改为x
+chmod a=rwx file1 将文件的所有权限对所有人开放(rwx写的时候顺序可随意)
+chmod a=- file1   关闭所有人对文件的任何权限
+chmod u-rwx,g=rw,o=r file1  
+
+
+
+
+
+
+
+
+
+

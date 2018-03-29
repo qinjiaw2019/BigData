@@ -68,12 +68,34 @@ groupadd net01 -g 2000
 	userdel user01 删除用户user01,但是不删除用户的目录和mail spool
 	userdel -r user02 删除用户user02,同时删除用户目录和mail spool
 	
-	
-	
-	
-	
-	
-	
+给用户设置密码
+
+root用户可以给任何用户设置密码	  passwd ljy   给ljy这个用户设置密码
+用户给自己设置密码,而且必须提供原始密码  passwd
+修改用户的shell
+  usermod -s /sbin/nologin ljy01  no shell
+  usermod -s /sbin/shell ljy01
+修改用户的附加组:
+usermod -G hr ljy01    //覆盖原有的附加组
+usermod -aG hr ljy01   //新增新的附加组
+gpasswd -a ljy01 fd    //将ljy01添加到 fd组中	
+gpasswd -d ljy01 fd    //将ljy01从fd组中删除     	
+
+查看用户信息
+cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+用户名:密码占位符:用户id:用户主组id:用户描述:用户根目录:用户的shell目录
+
+shell 是用户登录后运行的第一个程序
+no shell 
+/sbin/nologin  :没有用的shell,用户没法登录系统并对新系统进行管理,仅作为运行进程或者ftp的用户
+
+chage -d 0 ljy01   强制用户在下一次登录的时候修改密码
+
+提升用户的权限
+1.gpasswd -a hulk wheel  将hulk加入到wheel组
+2.用hulk登录到系统,并用sudo + 命令   可执行管理员权限
+	如sudo useradd hulk1
 	
 	
 	

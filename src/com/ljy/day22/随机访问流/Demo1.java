@@ -40,7 +40,6 @@ public class Demo1 {
 	}
 
 	// 写
-	@SuppressWarnings("unused")
 	private static void writeFile() {
 		try {
 			RandomAccessFile accessFile = new RandomAccessFile(".\\src\\com\\ljy\\day22\\随机访问流\\demo1.txt", "rw");

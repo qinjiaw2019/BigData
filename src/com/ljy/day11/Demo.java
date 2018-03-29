@@ -58,7 +58,6 @@ public class Demo {
             System.out.println(r.nextInt()%100);
 
         }
-
     }
 
     public static boolean checkPhone(String phone){
