@@ -5,3 +5,11 @@ a-97 0-48 A-65
 值传递和地址传递
 
 排序  二分查找
+
+Character
+Iterator
+SequenceInputStream(枚举器)
+synchronized
+instanceof
+abstract
+implements

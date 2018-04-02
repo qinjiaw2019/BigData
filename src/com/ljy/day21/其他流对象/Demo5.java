@@ -36,6 +36,7 @@ public class Demo5 {
 		
 		//创建一个序列流对象并关联相关的文件---参数是一个枚举器
 		SequenceInputStream sequenceInputStream = new SequenceInputStream(elements);
+		
 		FileOutputStream fos = new FileOutputStream(".\\src\\com\\ljy\\day21\\其他流对象\\temp5.txt");
 		
 		byte[]arra = new byte[1024];
