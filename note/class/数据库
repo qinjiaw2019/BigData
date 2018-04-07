@@ -1,0 +1,95 @@
+开启服务器:net start mysql;
+关闭服务器:net stop mysql;
+登录服务器:mysql -u用户名 -p密码
+
+1.创建数据库:create database 数据库名;
+  删除数据库:drop database 数据库名;
+2.显示所有的数据库:show databases;
+3.切换数据库:use 数据库名(即将要使用的数据库)
+	查看当前所在的数据库: select database();
+4.显示数据库的创建详细信息:
+  show create database db01;
+5.创建数据库时设置编码 
+  create database db02 character set utf8;
+6.修改数据库的编码:
+   alter database db02 character set bgk;
+7.查看编码:
+   show character set;
+8.创建表
+	create table teacher(
+		id varchar(20) primary key not null,
+		name varchar(20) not null,//会自动调整大小
+		age int,//不用写占用内存大小
+		sex char(2),//"a ",不会自动调整大小
+		addr varchar(50)
+	);
+9.插入数据:
+	insert into teacher(id,name,age,sex,addr) values('0001','zhang',25,'nn','beijing');
+10.删除表:
+	drop table teacher;  
+11.查看建表的信息
+show create table 表名;
+
+12.查看表的详细信息
+desc 表名;
+	
+13.修改表名:
+	alter table 旧表名 rename to 新表名;
+ 或者 alter table 旧表名 rename 新表名;
+ 
+14.往表中添加一列
+ alter table t_user add sex varchar(3);
+ 
+15.修改表中字段     alter table 表名 change 字段原名 字段新名 字段类型.
+ alter table t_user change name u_name varchar(2);
+ 	将表t_user的name字段改成u_name
+ 	
+16者修改字段的类型
+ alter table 表名 modify 字段名 字段类型
+
+17.	删除字段
+	alter table 表名 drop 列名
+
+=================数据操作=======================
+18.插入一条记录
+insert into t_user(id,name,age,sex,birthday) values(1,'zhangsan',22,'nv','2018-04-03');
+
+19.更新一条记录
+update t_user set sex='nan' where id=1;
+
+update 表名 set 字段名=字段值[,字段名=字段值] where id=1;
+
+20.删除记录
+delete from 表名  where 条件;  //不跟条件是清空表数据
+
+==================================================
+数据库的约束:
+
+21.约束
+create table t_user2(
+	id int primary key auto_increment, --primary key 主键约束:不能为空且不允许重复,auto_increment自增
+	name varchar(20) not null, -- not null 非空    这一列不能为空
+	email varchar(30) unique,-- unique 唯一约束  邮箱不允许重复
+)
+
+create table t_order(
+	id int primary key auto_increment,
+	order_name varchar(30),
+	user_id int,
+	constraint user_id_fk foreign key (user_id) references t_user(id)
+);
+
+数据库的备份与恢复操作
+备份:在cmd窗口中(管理员身份运行)执行下面命令:
+导出数据库
+mysqldump -u root -p ljy > C:\Users\lijia\Desktop\mysql_ljy.sql
+mysqldump -u 用户名 -p 数据库名 > 导出位置以及导出文件命名
+
+导出一张表
+mysqldump -u 用户名 -p 数据库名 表名 > 导出位置以及导出文件命名
+
+导入一张表
+1.登录数据库
+2.新建一个数据库(跟要导入的数据库同名)
+3.进入到数据库
+4.执行 source 数据库文件路径
