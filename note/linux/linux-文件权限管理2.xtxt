@@ -1,0 +1,42 @@
+文件的FACL  文件的访问控制列表
+使用ll查看文件的权限时,如果权限列表后面有一个+号,说明文件有额外的acl权限
+[root@ljy home]# ll temp/text.txt 
+-rw-r--r--+ 1 root root 0 Apr  8 22:06 temp/text.txt
+
+查看文件的getfacl 查看文件的权限
+[root@ljy home]# getfacl temp/text.txt 
+# file: temp/text.txt
+# owner: root
+# group: root
+user::rw-
+user:ljy:r--
+group::r--
+mask::r--
+other::r--
+
+设置facl权限:
+setfacl -m u:ljy:rw- temp/text.txt  给ljy这个用户对temp/text.txt文件设置读写权限
+
+setfacl -m g:hr:rw- temp/text.txt  给hr这个组对temp/text.txt文件设置读写权限
+
+setfacl -m o::rwx temp/text.txt  给其他人设置对文件temp/text.txt设置rwx权限
+
+取消facl权限
+setfacl -x u:ljy:rw- temp/text.txt 取消ljy对文件temp/text.txt的读写权限
+
+setfacl -x g:hr:rw- temp/text.txt  取消hr这个组对temp/text.txt文件的读写权限
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

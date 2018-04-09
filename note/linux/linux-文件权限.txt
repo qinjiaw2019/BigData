@@ -10,7 +10,7 @@ ll显示文件列表时,出现的如下:
 权限类型    权值
 读[r]    4
 写[w]    2
-指向[x]   1
+执行[x]   1
 
 修改文件的所有者所属组
 chow 用户名 文件名
@@ -33,12 +33,64 @@ chmod a=rwx file1 将文件的所有权限对所有人开放(rwx写的时候顺�
 chmod a=- file1   关闭所有人对文件的任何权限
 chmod u-rwx,g=rw,o=r file1  
 
+递归更改文件夹以及文件夹下面的属主,数组
+chown -R ljy01.sale files    将文件夹以及其子文件按的属主和属组改成 ljy01,sale
 
+递归更改文件的权限
+chmod -R u=rwx,g=rw,o=r files  将文件夹以及子文件 的属主权限改成rwx,数组权限改成rw,其他人的权限改成r
+chmod a+x file1 = chmod +x file1  将文件file1 的ugo权限增加执行权限x
 
+==============================================
+使用数字更改权限
+chmod 777 file1  将文件的ugo的权限都改为rwx(4+2+1)
+chmod -R 651 files  将文件夹以及子文件的u权限改为rw-(4+2),g的权限改为r-x(4+1),o的权限改为--x
+chmod -R 000 files  将文件夹以及子文件的ugo权限都改为---(没有任何权限)
+chmod -R 7 files 将文件夹以及文件的ug权限设置0,o的权限设为rwx    因为 7=007
 
+注意:数字权限需要ugo的权限同时设置(3位)
 
+关于读w
+	案例1:
+	1.有一个文件夹files
+	[root@ljy home]# ll -d files
+	drwxrwxr-x. 2 ljy sale 251 Apr  8 20:59 files
+	
+	2.files 夹下的文件权限都是777
+	
+	3.有一个用户hulk
+	在这种情况下hulk不能删除files目录下的文件,也可以新建文件
+	
+	4.修改files的权限为777后,hulk能删除files目录下的文件,也不能新建文件
+	
+	案例2:
+	1.有一个文件夹files,files的权限是777
+	drwxrwxrwx. 2 ljy sale 251 Apr  8 20:59 files
+	2.files下的所有文件的权限都是000
+	[root@ljy home]# ll files
+        total 0
+        ----------. 1 root root 0 Apr  8 20:57 file10
+        ----------. 1 root root 0 Apr  8 20:57 file11
+        ----------. 1 root root 0 Apr  8 20:57 file12
+        ----------. 1 root root 0 Apr  8 20:57 file13
+        ----------. 1 root root 0 Apr  8 20:57 file14
+        ----------. 1 root root 0 Apr  8 20:57 file15
+        ----------. 1 root root 0 Apr  8 20:57 file16
+        ----------. 1 root root 0 Apr  8 20:57 file17
+        ----------. 1 root root 0 Apr  8 20:57 file18
+	
+	3.有一个hulk用户,
+	[root@ljy home]# id hulk
+    uid=2001(hulk) gid=2002(hulk) groups=2002(hulk),1002(hr)
+	
+	4.这种情况下,hulk不能读写执行files下的文件,但是可以删除和新建文件
 
+****案例总结:对目录有w权限,可以在目录中新建和删除文件,无需关注目录下子文件的权限
+       删文件实则是对目录在操作
+如果用户对目录没有x权限,则不能进入到目录中
 
-
+****注意:对于文件,x权限要小心给以---因为不敢确定文件中的代码是有益的还是有害的
+         对于目录,w权限要小心给以
+    
+**** 文件的删除操作只能看要删除文件的上层目录是否有w权限,尽管有要删除文件的上上层目录具有w权限也不管用
 
 
