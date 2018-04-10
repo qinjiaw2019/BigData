@@ -1,9 +1,8 @@
 package com.ljy.jdbc;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Properties;
+import java.util.ResourceBundle;
 
 public class JDBCUtils {
 	private static String driverClass;
@@ -13,13 +12,21 @@ public class JDBCUtils {
 
 	static {
 		try {
-			InputStream in = JDBCUtils.class.getClassLoader().getResourceAsStream("dbconfig.properties");
-			Properties properties = new Properties();
-			properties.load(in);
-			driverClass = properties.getProperty("driverClass");
-			url = properties.getProperty("url");
-			user = properties.getProperty("user");
-			password = properties.getProperty("password");
+			//获取配置文件方式1
+			ResourceBundle bundle = ResourceBundle.getBundle("dbconfig");
+			driverClass = bundle.getString("driverClass");
+			url = bundle.getString("url");
+			user = bundle.getString("user");
+			password = bundle.getString("password");
+			
+			//获取配置文件方式2
+//			InputStream in = JDBCUtils.class.getClassLoader().getResourceAsStream("dbconfig.properties");
+//			Properties properties = new Properties();
+//			properties.load(in);
+//			driverClass = properties.getProperty("driverClass");
+//			url = properties.getProperty("url");
+//			user = properties.getProperty("user");
+//			password = properties.getProperty("password");
 			//注册驱动
 			Class.forName(driverClass);
 		} catch (Exception e) {
