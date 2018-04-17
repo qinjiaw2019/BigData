@@ -1,0 +1,32 @@
+mkdir -p temp/1/2/3  创建层子目录
+
+more /var/log/boot.log  百分比查看文件
+
+less /var/log/boot.log  
+
+cp -r 目录1 目标路径   --------------递归复制目录
+mv 目录1 目标路径      -----------不用递归即可移动
+
+chown root:hr file01  将文件的所属主改成root,所属组改成hr
+
+>  清空文件原有内容清空,重新写入新的内容
+>> 在原有的内容后面新行追加新的内容
+
+
+打包:tar
+options:
+ -z :压缩
+ -c :创建包
+ -v :显示进度
+ -x :解压
+ 
+ 查找命令:
+ which   查看命令的位位置
+ locate  定位
+ whereis java   查找路径中包含字符串   可用于软件安装目录
+ find / -name java  查找根目录下 文件名是该字符串的
+ 
+ 
+ cd -  快速回到上一次目录
+ cd ~ 快速回到家目录
+ 

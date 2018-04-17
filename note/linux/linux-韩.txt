@@ -73,7 +73,7 @@ useradd [用户名] 创建一个用户
 passwd [用户名] 给创建的用户设置密码
 hostname:输出域名
 whoami :输出当前用户
-bush -version:显示当前系统的版本
+bash -version:显示当前系统的版本
 ls:显示当前目录下的文件(蓝色文件夹,除此以外都是文件)
 ls -a(ls --all):显示当前目录下的所有文件(包含隐藏文件)
 tab键补齐,也叫唯一补齐

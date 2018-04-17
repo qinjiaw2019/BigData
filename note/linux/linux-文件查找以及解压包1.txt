@@ -1,0 +1,37 @@
+================================
+which :查询命令所在的位置
+which查找的是从环境变量中去查找
+查看环境变量: echo $PATH
+不适合查找常规文件
+
+===========================
+常规文件查找:
+locate
+
+1.安装locate
+yum -y install locate
+---->no packge locate available
+查看软件包提供
+yum provides locate
+---->mlocate-0.26-6.el7.x86_64
+
+yum -y install mlocate
+
+1.新建一个文件 touch file1.txt
+执行查找命令:locate file1.txt 
+报错:can not stat () `/var/lib/mlocate/mlocate.db': No such file or directory
+原因是新建的文件还没有更新到数据库
+更新到数据库
+:updatedb
+再查找:
+/root/temp/file1.txt
+
+find  ---->每次都是遍历指定的文件
+
+查找 / 下3以内并且 name为ifcfg-eth0的文件
+find / -maxdepth 3 -a -name "ifcfg-eth0"
+
+查找根下 属组是hr 且 数主是root的文件   -ls是action
+find / -group hr -a -user root -ls
+
+
