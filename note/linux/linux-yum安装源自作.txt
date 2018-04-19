@@ -1,0 +1,125 @@
+和yum相关的配置文件
+ls -l /etc/yum.repos.d/
+-rw-r--r--. 1 root root 1926 Nov 27  2013 CentOS-Base.repo       ************在线源,yum安装默认使用在线源                                    
+-rw-r--r--. 1 root root  638 Nov 27  2013 CentOS-Debuginfo.repo
+-rw-r--r--. 1 root root  630 Nov 27  2013 CentOS-Media.repo      ************本地yum源文件
+-rw-r--r--. 1 root root 3664 Nov 27  2013 CentOS-Vault.repo
+-rw-r--r--. 1 root root  113 Oct 14  2011 nginx.repo
+
+vi /etc/yum.repos.d/CentOS-Base.repo
+
+[base]  #base源
+name=CentOS-$releasever - Base
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
+#baseurl=http://mirror.centos.org/centos/$releasever/os/$basearch/
+gpgcheck=1  # 1表示要对包的完成性进行校验
+[enable=1]  # 1表示启用该源  0表示不启用
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#released updates
+[updates] #更新源
+name=CentOS-$releasever - Updates
+mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=updates
+#baseurl=http://mirror.centos.org/centos/$releasever/updates/$basearch/
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+
+1.备份 /etc/yum.repos.d/下的几个文件
+	rename .repo .repo_bak *.repo
+	mv CentOS-Media.repo_bak CentOS-Media.repo
+	cp CentOS-Media.repo CentOS-Media.repo_bak
+	
+  ll  /etc/yum.repos.d/
+
+-rw-r--r--. 1 root root 1926 Nov 27  2013 CentOS-Base.repo_bak
+-rw-r--r--. 1 root root  638 Nov 27  2013 CentOS-Debuginfo.repo_bak
+-rw-r--r--. 1 root root  900 Apr 19 05:34 CentOS-Media.repo
+-rw-r--r--. 1 root root  630 Apr 19 05:26 CentOS-Media.repo_bak
+-rw-r--r--. 1 root root 3664 Nov 27  2013 CentOS-Vault.repo_bak
+-rw-r--r--. 1 root root  113 Oct 14  2011 nginx.repo_bak
+
+2.编辑CentOS-Media.repo 结果如下:
+
+#===============system=========================
+
+#[c6-media]
+#name=CentOS-$releasever - Media
+#baseurl=file:///media/CentOS/
+#        file:///media/cdrom/
+#        file:///media/cdrecorder/
+#gpgcheck=1
+#enabled=0
+#gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+#==========================custom==========================
+[c6-media-custom]
+name=CentOS-$releasever - Media_CUSOTOM
+baseurl=file:///media/CentOS
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+3.在media文件夹下新建CentOS目录
+	mkdir /media/CentOS/   #该目录可以自定义  只要与CentOS-Media.repo中baseurl指定的目录即可
+4.将CentOS-6.5-x86_64-bin-DVD1.iso 挂载到/media/CentOS/目录下
+	mount -o loop /home/soft/CentOS-6.5-x86_64-bin-DVD1.iso /media/CentOS/
+5.查看挂载结果:
+[root@localhost soft]# ll /media/CentOS/
+total 682
+-r--r--r--. 2 root root     14 Nov 29  2013 CentOS_BuildTag
+dr-xr-xr-x. 3 root root   2048 Nov 29  2013 EFI
+-r--r--r--. 2 root root    212 Nov 28  2013 EULA
+-r--r--r--. 2 root root  18009 Nov 28  2013 GPL
+dr-xr-xr-x. 3 root root   2048 Nov 29  2013 images
+dr-xr-xr-x. 2 root root   2048 Nov 29  2013 isolinux
+dr-xr-xr-x. 2 root root 655360 Nov 29  2013 Packages   #********rpm包所在的位置************
+-r--r--r--. 2 root root   1354 Nov 28  2013 RELEASE-NOTES-en-US.html
+dr-xr-xr-x. 2 root root   4096 Nov 29  2013 repodata   #********源数据[必须要有才能保证安装成功]*******
+-r--r--r--. 2 root root   1706 Nov 28  2013 RPM-GPG-KEY-CentOS-6
+-r--r--r--. 2 root root   1730 Nov 28  2013 RPM-GPG-KEY-CentOS-Debug-6
+-r--r--r--. 2 root root   1730 Nov 28  2013 RPM-GPG-KEY-CentOS-Security-6
+-r--r--r--. 2 root root   1734 Nov 28  2013 RPM-GPG-KEY-CentOS-Testing-6
+-r--r--r--. 1 root root   3380 Nov 29  2013 TRANS.TBL
+
+6.查看显示如下表示配置成功是否配置成功:
+  yum list
+yum-plugin-rpm-warm-cache.noarch    1.1.30-14.el6          c6-media-custom
+yum-plugin-show-leaves.noarch       1.1.30-14.el6          c6-media-custom
+yum-plugin-tmprepo.noarch           1.1.30-14.el6          c6-media-custom
+yum-plugin-tsflags.noarch           1.1.30-14.el6          c6-media-custom
+yum-plugin-upgrade-helper.noarch    1.1.30-14.el6          c6-media-custom
+yum-plugin-verify.noarch            1.1.30-14.el6          c6-media-custom
+yum-plugin-versionlock.noarch       1.1.30-14.el6          c6-media-custom
+yum-presto.noarch                   0.6.2-1.el6            c6-media-custom
+
+[root@localhost yum.repos.d]# yum repolist
+Loaded plugins: fastestmirror, refresh-packagekit, security
+Loading mirror speeds from cached hostfile
+repo id                      repo name                              status
+c6-media-custom              CentOS-6 - Media_CUSOTOM               6,367
+repolist: 6,367
+
+7.安装测试
+yum -y zsh
+which zsh	
+	
+	
+===================
+自作源2
+
+1.在/etc/yum.repos.d/ 目录下
+  vi ./nginx.repo
+[nginx]
+name=CentOS-$releasever - Media_CUSOTOM
+baseurl=http://nginx.org/packages/centos/6/noarch/
+gpgcheck=0
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+
+
+	
+	
+	
+	
+	

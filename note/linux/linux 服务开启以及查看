@@ -1,0 +1,30 @@
+1.临时启动关闭
+
+service 服务名  start  开始服务   如:开启防火墙 service iptables on
+							 :开始网络服务 service network start
+查看服务状态
+service sshd status 查看sshd服务的开启状态
+service sshd stop 停止sshd服务,或者采用杀死进程的方式停止服务 
+								1.查看sshd的进程pid  ps -ef | grep sshd
+								root       1915      1  0 08:27 ?        00:00:03 sshd: root@pts/0 
+								root       3001      1  0 10:19 ?        00:00:00 /usr/sbin/sshd
+								root       3103   1920  0 10:39 pts/0    00:00:00 grep sshd
+								2.结束sshd的进程
+								kill -9 3001
+								
+
+
+开机启动  chkconfig 服务名 on 
+		chkconfig 服务名 --list   查看各个init状态的启动情况
+防火墙在3 和 5 的情况下开机移动,其他情况下关闭:
+	1.先整体关闭各个状态下的防火墙
+	chkconfig iptables off
+	2.开启35状态下的防火墙
+	chkconfig --level 35 iptables on
+其他服务也是一样
+
+
+
+
+
+

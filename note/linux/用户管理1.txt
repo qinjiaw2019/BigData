@@ -93,9 +93,36 @@ no shell
 chage -d 0 ljy01   强制用户在下一次登录的时候修改密码
 
 提升用户的权限
+方式一
 1.gpasswd -a hulk wheel  将hulk加入到wheel组
 2.用hulk登录到系统,并用sudo + 命令   可执行管理员权限
 	如sudo useradd hulk1
+方式二:
+	为一个用户增加类似root的用户
+	1.root用户编辑sudoers文件
+	viduso -f /etc/sudoers
+	
+	2.在如下位置添加一个用户
+	## Allow root to run any commands anywhere
+		root    ALL=(ALL)       ALL
+	添加的代码如下:
+	## create a like root user by ljy
+	user01  ALL=(ALL)       ALL
+	
+	3.完成以上步骤,user01已经可以删除属主不是user01的文件了,但是删除的时候需要输入user01的用户密码
+		删除命令:
+		sudo rm -rf /home/file.txt   回车输入密码就还可以删除/home/file.txt文件了
+	4.编辑相同的文件,编辑代码如下
+	## Same thing without a password
+	# %wheel        ALL=(ALL)       NOPASSWD: ALL
+	%user01 ALL=(ALL)       NOPASSWD: ALL
+	5.保存退出后,切换到user01,在用sudo rm -rf /home/file.txt 则可以不用密码就可以删除/home/file.txt文件了;
+	
+	
+	
+	
+
+	
 	
 	
 	

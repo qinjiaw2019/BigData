@@ -1,0 +1,135 @@
+linux 软件安装方式
+1.二进制程序安装
+2.rpm安装(后缀名为*.rpm)
+3.yum在线安装(本质也是rpm安装)
+4.源码安装
+
+
+
+一,二进制程序安装
+================================================================
+tar.gz 等
+步骤:
+1.解压文件
+2.配置相关的环境变量
+
+在安装自己的jdk之前需要卸载openjdk
+下载openjdk:mv /usr/bin/java /usr/bin/java_bak
+jdk 
+export JAVA_HOME=/java/jdk1.8.0_161
+export JRE_HOME=${JAVA_HOME}/jre
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+export PATH=${JAVA_HOME}/bin:$PATH
+
+
+
+rpm 包安装
+===================================================
+以rpm为拓展名的文件
+
+常用命令:
+查询:rpm -qa | grep mysql
+rpm -q mysql
+rpm -ql mysql
+
+安装:
+rpm -ivh 包名
+rpm -ivh --prefix 指定安装目录  rpm包不建议安装时指定目录
+
+更新:
+rpm -Uvh 包名
+
+卸载
+rpm -e package 忽略依赖
+rpm --nodeps package   卸载时忽略依赖
+
+DEMO:安装mysql:
+1.检查系统中已经安装的mysql:
+rpm -qa | grep mysql
+mysql-libs-5.1.71-1.el6.x86_64
+2.卸载mysql-libs-5.1.71-1.el6.x86_64
+	rpm -e mysql-libs-5.1.71-1.el6.x86_64
+	发现卸载失败:因为有依赖
+  卸载时忽略依赖
+  rpm -e mysql-libs-5.1.71-1.el6.x86_64 --nodeps
+  
+3.安装服务器:rpm -ivh MySQL-server-5.5.47-1.linux2.6.x86_64.rpm
+4.安装客户端:rpm -ivh MySQL-client-5.5.47-1.linux2.6.x86_64.rpm
+
+mysql安装完成后:
+1.查看用户:
+	select * from mysql.user \G;
+2. 给root用户设置密码:
+	update mysql.user set password=PASSWORD('root') where User='root';
+3. 设置远程登录的:
+	update mysql.user set host='%' where user='root' and host='127.0.0.1';
+5. 刷新上面的设置
+	flush privileges;
+6.关闭防火墙(service iptables stop)使用远程链接端链接测试.
+
+卸载mysql:
+ yum -y remove MySQL-server-5.5.47-1.linux2.6.x86_64
+ yum -y remove MySQL-client-5.5.47-1.linux2.6.x86_64
+ rm -rf /var/lib/mysql/
+
+DEMO:
+安装nc:
+rpm -ivh nc-1.84-22.el6.x86_64.rpm
+====================================================
+
+
+yum安装
+
+查询:yum -info[-list(查询所有的)] 
+或者 yum provides 软件名 
+yum  search gcc
+
+yum grouplist  查询组包
+yum groupinfo  查询组包
+
+以上都是查询是否具有网络资源包
+安装
+yum -y gcc
+yum -y groupinstall
+
+更新 yum -y update 升级所有的包括内核
+yum -y upgrade 只升级所有的软件,不升级系统内核
+
+yum -y upgrade gcc 升级gcc
+yum -y groupupgrade group 更新组
+
+卸载
+yum -y remove nc
+
+
+清空缓存:
+yum repolist
+yum clean all
+yum makecache
+
+和yum相关的配置文件
+ll /etc/yum.repos.d/
+
+CentOS-Base.repo --在线yum源文件,默认使用
+CentOS-Media.repo  --本地源
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
