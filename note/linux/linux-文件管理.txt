@@ -223,6 +223,3 @@ yum install -y gcc texinfo-tex flex zip libgcc.i386 glibc-devel.i386
 
 
 
-
-
-

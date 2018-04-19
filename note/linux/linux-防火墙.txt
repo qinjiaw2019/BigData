@@ -1,0 +1,46 @@
+编辑防火墙
+vim /etc/sysconfig/iptables
+
+防火墙表的类型
+filter:默认的表,一般配置该表
+nat:
+mangle:
+raw:
+
+命令
+iptables -L -t filter >==>iptables -L
+
+iptables -F  刷新即清除防火规则 默认清除filter
+iptables -F  -t nat 刷新即清除防火规则 清除nat
+#保存配置
+service iptables save
+或者 iptables-save
+
+//添加规则
+iptables -A INPUT -p tcp --dport 80 -j DROP
+//删除规则
+iptables -F -t filter
+
+iptables -L -n -v   显示链路详细信息
+
+
+
+路由
+
+显示路由表
+route
+                          网域/主机
+route add -net/-host   添加路由
+route del  删除路由
+
+demo:
+route add -host 192.168.93.130 netmask 255.255.255.0 dev eth0
+
+删除本地的路由规则:
+route del -net 192.168.93.0 netmask 255.255.255.0 dev eth0
+
+
+
+
+
+

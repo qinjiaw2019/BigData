@@ -1,0 +1,24 @@
+输出一天以后
+echo `date -d "-1 days ago" "+%Y-%m-%d %H:%M:%S"`
+
+输出一天以前
+echo `date -d "1 days ago" "+%Y-%m-%d %H:%M:%S"`
+
+输出一个月以后
+echo `date -d "-1 months ago" "+%Y-%m-%d %H:%M:%S"`
+
+输出一个月之前
+echo `date -d "1 months ago" "+%Y-%m-%d %H:%M:%S"`
+输出一年以后
+echo `date -d "-1 years ago" "+%Y-%m-%d %H:%M:%S"`
+输出一年以前
+echo `date -d "1 years ago" "+%Y-%m-%d %H:%M:%S"`
+
+获取指定时间戳
+echo `date -d "2018-04-19 22:03:43" +%s`
+1524146623
+
+获取当前的时间戳
+echo `date +%s`
+根据时间戳以及指定格式的转换
+echo `date -d @1524146759 +"%Y-%m-%d %H:%M:%S"`
