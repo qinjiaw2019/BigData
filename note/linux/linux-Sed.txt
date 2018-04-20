@@ -1,0 +1,82 @@
+sed '1~2d' test   打印偶数行       d是删除  1行以及1+2n行
+sed '/^李四/a====lisi===' test 在与李四匹配的那一行后面一行追加====lisi=== /a表示追加 
+sed '/^李四/i====lisi===' test 在与李四匹配的那一行前面一行追加====lisi=== /a表示追加 
+
+seq 3 | sed '2i\hello' 在2行之前插入hello
+
+cat s1 |sed '/gp1705/i\ljy'  在与gp1705行前加入ljy
+cat s1 |sed '/gp1705/a\ljy'  在与gp1705行后加入ljy
+
+sed '2d' test  "删除"第二行
+sed "2~2d" test  "删除"奇数行
+
+seq 10 | sed '2,9c hello' 替换2-9行
+
+替换world为hi
+[root@localhost shell]# cat s1 | sed '/world/c hi'
+Hello
+hi
+gp1705
+[root@localhost shell]# 
+
+现将第2行替换成hello,再将其他行每个字符替换成X
+[root@localhost shell]# seq 3 | sed -e '2c hello' -e 's/./X/'
+X
+hello
+X
+[root@localhost shell]# 
+
+
+
+[root@localhost shell]# seq 10 | sed -e '2c hello' -e 's/./X/'
+X
+hello
+X
+X
+X
+X
+X
+X
+X
+X0
+[root@localhost shell]# seq 10 | sed -e '2c hello' -e 's/./X/g'
+X
+hello
+X
+X
+X
+X
+X
+X
+X
+XX
+[root@localhost shell]# seq 10 | sed -e '2c hello' -e 's/.*/X/g'
+X
+hello
+X
+X
+X
+X
+X
+X
+X
+X
+
+
+sed -n '2~2p' test  查看偶数行
+sed -n '2,/^王五/p' test  查看第二行 以及以王五开头的行
+
+查找李四那一行 并把那一行的男-->人妖
+[root@localhost shell]# sed '/李四/s/男/人妖/' test
+张三 男 19
+李四 人妖 20
+王五 男 12
+李四1 nv 12
+
+只打印1-2行,之后就退出 q-->quit
+sed 2q test	
+
+
+
+
+

@@ -1,0 +1,215 @@
+awk :文本数据分析工具
+语法:
+awk 'pattern {action}...'
+awk -F '' '[BEGIN{}] {action}...[END{}' file
+
+调用awk的方式
+
+1.直接命令行
+awk -F '' '[BEGIN{}] {action}...[END{}' file
+
+2.封装成awk脚本
+#!/bin/awk
+
+3.普通shell脚本使用 awk -f script
+
+命令:
+[root@localhost shell]# awk '{print $1,2,3}' test
+张三 2 3
+李四 2 3
+王五 2 3
+李四1 2 3
+
+-F 默认分隔符是制表符和空格
+
+
+vim ./em
+
+100  Thomas  Manager	Sales	5000
+200  Jason   Developer  Technology  5500
+300  Sanjay  Sysadmin   Technology  7000
+400  Nisha   Manager    Marketing   9500
+500  Randy   DBA        Technology  6000
+
+awk -F " " '{print $0}' em   $0 表示整行
+[root@localhost shell]# awk -F " " '{print $0}' em
+100  Thomas  Manager	Sales	5000
+200  Jason   Developer  Technology  5500
+300  Sanjay  Sysadmin   Technology  7000
+400  Nisha   Manager    Marketing   9500
+500  Randy   DBA        Technology  6000
+
+
+内置变量
+awk -F: '{print NF,NR}' /etc/passwd
+NF:表示被分割成几个字段
+NR:表示已经读的记录数
+FS:设置输入域的分隔符 === -F
+
+
+awk 'BEGIN{
+	FS=" "
+	OFS="="
+	lt6000=0
+	ge6000lt7000=0
+	ge7000lt8000=0
+	ge8000=0
+	print "zone\tcount"
+}
+{
+	if($5 < 6000){
+		lt6000++
+	}else if($5 < 7000){
+		ge6000lt7000++
+	}else if($5 < 8000){
+		ge7000lt8000++
+	}else{
+		ge8000++
+	}
+}
+END{
+	print "lt6000",lt6000
+	print "ge6000lt7000",ge6000lt7000
+	print "ge7000lt8000",ge7000lt8000
+	print "ge8000",ge8000
+}' ./em
+
+循环
+
+awk -F ":" 'BEGIN{
+	count=0
+}
+{
+	name[count]=$1
+	count++
+}
+END{
+	for(i=0;i<NR;i++){
+		print i,name[i]
+	}
+}' /etc/passwd
+
+计算工资总和
+
+awk -F " " 'BEGIN{
+	sum=0
+}
+{
+	sum+=$5
+}
+END{
+	print sum
+}' ./em
+
+计算平均工资
+
+awk -F " " 'BEGIN{
+	sum=0
+}
+{
+	sum+=$5
+}
+END{
+	print sum/NR
+}' ./em
+
+上面等价于
+
+awk -F " " 'BEGIN{
+	sum=0
+	count=0
+}
+{
+	sum+=$5
+	count++
+}
+END{
+	print sum/count
+}' ./em
+
+wordcount 例子
+
+awk -F " " '{
+	for (i=1;i<NF;i++){
+		arr[$i]++
+	}
+}
+END{
+	for(word in arr){
+		print word,arr[word]
+	}
+}' ./tx
+
+
+awk -F " " '{
+	for(i=1;i<NF;i++){
+		arr[$i]++
+		print arr[$i]
+	}
+}' ./tx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,29 @@
+cut 从文本或者文件流中提取字段
+cut -n(-b) selectedNum file
+cut -c selectedNum file
+cut -d -f selectedNum file
+cut -d "分隔符"-f selectedNum file
+
+
+cut -b 1 /etc/passwd  取文本中每一行的字一个字节
+cut -c 1-4 /etc/passwd 取文本中每一行的1-4个字符
+cut -d ":" -f 1 /etc/passwd  提取文本中每行以冒号分割的第一段
+
+cut -d ":" -f 3,4 /etc/passwd 提取文本中每行以冒号分割的3和4段
+echo $PATH | cut -d ":" -f 5 提取环境变量中以冒号分割的第5段
+
+vim test
+张三 男 19
+李四 男 20
+王五 男 12
+
+cut -c 1 ./test
+  张
+  李
+  王
+
+
+从网卡配置文件中取出ip地址  
+ifconfig eth0 | grep "inet addr" | cut -d ":" -f 2 |cut -d " " -f 1
+192.168.93.130
+ 
