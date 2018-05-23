@@ -495,3 +495,52 @@ SELECT RAND();-- double
 --      (3)source C:\Users\lijia\Desktop\database\ljy_t_user.sql
 
 -- 用数据库可视化工具备份与灰度(需要登录数据)
+
+
+-- -----------------------------------------------------------------------------------------------------------------
+-- mysql权限管理的简单操作
+
+--创建用户
+CREATE USER 'hadoop'@'192.168.93.111' IDENTIFIED BY 'hadoop';
+
+--查询用户
+SELECT USER ,HOST,PASSWORD FROM mysql.user;
+
+--为hadoop用户新增其他地址的访问权限
+UPDATE mysql.user SET HOST='192.168.93.111' WHERE USER='hadoop';
+INSERT INTO mysql.user(HOST,USER,PASSWORD) VALUES('::1','hadoop',PASSWORD('hadoop'));
+INSERT INTO mysql.user(HOST,USER,PASSWORD) VALUES('localhost','hadoop',PASSWORD('hadoop'));
+--刷新权限设置
+FLUSH PRIVILEGES;
+
+--删除用户名或者密码是''的用户
+DELETE FROM mysql.user WHERE USER='' OR PASSWORD='';
+
+DELETE FROM mysql.user WHERE USER='hadoop' AND HOST='::1';
+
+--给hadoop添加访问sqoop数据库的权限
+GRANT ALL PRIVILEGES ON sqoop.* TO 'hadoop'@'%';
+FLUSH PRIVILEGES;
+
+--撤销hadoo访问数据库的权限
+REVOKE ALL PRIVILEGES ON sqoop.* FROM 'hadoop'@'%';
+FLUSH PRIVILEGES;
+
+--给hadoop用户增加查询权限
+GRANT SELECT ON sqoop.employee TO 'hadoop'@'%';
+FLUSH PRIVILEGES;
+
+--查询当前用户的权限
+SHOW GRANTS;
+
+--查询hadoop用户的权限
+SHOW GRANTS FOR hadoop@'%';
+--给用户增加删除权限
+GRANT DELETE ON sqoop.employee TO 'hadoop'@'%';
+FLUSH PRIVILEGES;
+
+--删除用户
+DELETE FROM mysql.user WHERE USER='hadoop';
+FLUSH PRIVILEGES;
+
+
