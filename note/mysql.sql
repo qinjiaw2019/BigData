@@ -65,7 +65,14 @@
 -- 17.	删除字段
 -- 	alter table 表名 drop 列名
 	
-	
+-- 修还表的字符集
+alter table table_name default character set utf8
+
+-- 修改表字段的字符集
+ALTER TABLE employee CHANGE column_name column_name column_tye CHARACTER SET utf8;
+
+-- 修改表的字符集和所有列的字符集
+alter table table_name convert to character set utf8;
 	
 -- 删除数据库
 DROP DATABASE IF EXISTS ljy;
