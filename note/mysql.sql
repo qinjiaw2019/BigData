@@ -550,4 +550,17 @@ FLUSH PRIVILEGES;
 DELETE FROM mysql.user WHERE USER='hadoop';
 FLUSH PRIVILEGES;
 
+-- 创建用户,用户名ljy 密码 123456
+CREATE USER 'ljy' IDENTIFIED  BY '123456'
+-- 显示ljy这个用户的所有权限
+SHOW GRANTS FOR ljy@'%';
+-- 查看所有用户
+SELECT USER ,HOST,PASSWORD FROM mysql.user;
+-- 授权数据库的所有权限给ljy这个用户
+GRANT ALL PRIVILEGES ON *.* TO 'ljy'@'%';
 
+-- 修改用户ljy的密码为000000
+UPDATE mysql.user SET PASSWORD=PASSWORD('000000') WHERE USER='ljy';
+
+-- 刷新权限才能生效
+FLUSH PRIVILEGES;
