@@ -41,7 +41,11 @@ rpm -Uvh 包名
 
 卸载
 rpm -e package 忽略依赖
-rpm --nodeps package   卸载时忽略依赖
+rpm -e --nodeps package   卸载时忽略依赖
+如果卸载时出现:error: %preun(xxx) scriptlet failed, exit status1 
+使用 rpm -e --noscripts mysql 进行卸载
+
+
 
 DEMO:安装mysql:
 1.检查系统中已经安装的mysql:
