@@ -30,6 +30,30 @@
 --    alter database db02 character set bgk;
 -- 7.查看编码:
 --    show character set;
+-- mysql 安装linux上,
+-- 解决将数据存到数据表时出现乱码问题
+-- 查看
+SHOW VARIABLES LIKE '%char%'
+-- Variable_name	Value
+-- character_set_client	utf8
+-- character_set_connection	utf8
+-- character_set_database	utf8
+-- character_set_filesystem	binary
+-- character_set_results	utf8
+-- character_set_server	latin1   就是这里捣鬼:服务端的编码是latin1
+-- character_set_system	utf8
+-- character_sets_dir	/usr/share/mysql/charsets/
+
+-- 解决方案
+-- cp /usr/share/mysql/my-medium.cnf /etc/my.cnf
+-- vi my.cnf 在文件末尾追加下面配置,然后重启mysql即可
+-- character-set-server=utf8
+-- character-set-client=utf8
+-- collation-server=utf8_general_ci
+
+TRUNCATE dimension_location
+
+-- 重启客户端
 -- 8.创建表
 -- 	create table teacher(
 -- 		id varchar(20) primary key not null,
