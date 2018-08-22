@@ -588,3 +588,51 @@ UPDATE mysql.user SET PASSWORD=PASSWORD('000000') WHERE USER='ljy';
 
 -- 刷新权限才能生效
 FLUSH PRIVILEGES;
+
+------------------------------- 索引相关----------------------------------
+CREATE TABLE `award` (
+   `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+   `aty_id` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '活动场景id',
+   `nickname` VARCHAR(12) NOT NULL DEFAULT '' COMMENT '用户昵称',
+   `is_awarded` TINYINT(1) NOT NULL DEFAULT 0 COMMENT '用户是否领奖',
+   `award_time` INT(11) NOT NULL DEFAULT 0 COMMENT '领奖时间',
+   `account` VARCHAR(12) NOT NULL DEFAULT '' COMMENT '帐号',
+   `password` CHAR(32) NOT NULL DEFAULT '' COMMENT '密码',
+   `message` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '获奖信息',
+   `created_time` INT(11) NOT NULL DEFAULT 0 COMMENT '创建时间',
+   `updated_time` INT(11) NOT NULL DEFAULT 0 COMMENT '更新时间',
+   PRIMARY KEY (`id`)
+ ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='获奖信息表';
+
+-- 单列索引有：普通索引，唯一索引，主键索引
+
+-- 创建单列索引之普通索引,普通索引列可以有空值，可以有重复
+CREATE INDEX account_Index ON `award`(`account`);
+-- 删除索引 
+ALTER TABLE `award` DROP INDEX  account_Index;
+
+
+-- 修改表的方式创建索引
+ALTER TABLE award ADD INDEX count_index(`account`);
+ALTER TABLE award DROP INDEX count_index;
+
+
+-- 创建唯一索引：唯一索引的列不允许重复，但是可以为空
+CREATE UNIQUE INDEX account_index ON `award`(`account`);
+-- 删除索引
+ALTER TABLE `award` DROP INDEX account_index;
+
+
+-- 创建主键索引：主键索引列不允许重复，也不允许为空
+
+-- 创建组合索引
+ALTER TABLE `award` ADD INDEX mul_index(`aty_id`,`award_time`);
+ALTER TABLE `award` DROP INDEX mul_index;
+
+-- 创建全文索引
+ALTER TABLE `award` ADD FULLTEXT fulltext_nickname(`password`);
+-- 查询引擎
+SHOW ENGINES;
+
+-- 修改表的引擎
+ALTER TABLE `award` ENABLE=MYISAM;
